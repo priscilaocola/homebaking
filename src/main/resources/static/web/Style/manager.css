@@ -10,10 +10,11 @@
 }
   .form {
     margin-bottom: 1rem;
-    background-color: rgb(249, 190, 190);
     border: 1px solid black;
     padding: 1rem;
     border-radius: 2rem;
+    background-image: url(../asset/digital-world.jpg);
+  background-size: cover;
   }
 
   .form-label {
@@ -25,14 +26,15 @@
     width: 100%;
     border: 1px solid black;
    padding: 1rem;
-   background-color: rgb(249, 190, 190);
- 
+   background-image: url(../asset/digital-world.jpg);
   }
   pre {
-    background-color: rgb(249, 190, 190);
+    background-image: url(../asset/bg-world.jpg);
     padding: 10px;
   }
   h2{
-    background-color: rgb(249, 190, 190);
-    align-items: center;
+    text-align: center;
+  }
+  h1{
+    text-align: center;
   }

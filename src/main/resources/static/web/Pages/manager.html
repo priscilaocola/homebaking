@@ -7,17 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="shortcut icon" href="../asset/logo-modified.png" type="image/x-icon">
     <link rel="stylesheet" href="../Style/manager.css">
-        <title>Admin</title>
+    <title>Admin | Elfer Bank</title>
 </head>
 
 <body>
-    <header></header>
+    
+    <header class="d-flex justify-content-center gap-5">
+        <img class="logo p-3" src="../asset/logo.png" alt="logo">
+        <div class="navbar">
+            <nav id="navbar" class="d-flex gap-3 justify-content-around">
+                <a href="./index.html">HOME</a>
+                <a href="#">ADMIN </a>
+                <a href="./accounts.html">ACOUNTS</a>
+                <a href="#">CARDS</a>
+                <a href="#">INVESTIMENT</a>
+            </nav>
+        </div>
+    </header>
     <main>
-        <div id="app" class=" m-3 container">
+        <div id="app" class=" m-3 container ">
             <div class="form">
                 <h1>Client Manager</h1>
-                <form v-on:submit="addClient">
+                <form v-on:submit="addClient()">
                     <div class="mb-3">
                         <label for="firstName" class="form-label">Name:</label>
                         <input type="text" class="form-control" id="firstName" v-model="obj.firstName">
@@ -31,19 +44,19 @@
                         <input type="email" class="form-control" id="email" v-model="obj.email">
                     </div>
                     <div >
-                        <button type="submit" class="btn btn-danger">Add Client</button>
+                        <button type="submit" class="buttonAd btn btn-danger">Add Client</button>
                     </div>
                 </form>
             </div>
-            <div class="mt-4 table">
+            <div class="table">
                 <h2 class="fw-semibold">Client List</h2>
-                <table class="table ">
+                <table class="table  text-center">
                     <thead>
                         <tr>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Delete</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,26 +64,39 @@
                             <td>{{ client.firstName }}</td>
                             <td>{{ client.lastName }}</td>
                             <td>{{ client.email }}</td>
-                            <td><i @click="deleteClient(client._links.client.href)" role="button"
-                                class="bi bi-file-x"></i></td>
-                        <td><i @click="deleteClient()" role="button" class="bi bi-pencil-fill"></i></td>
+                            <td><button class="buttonAdd btn btn-danger">Delete</button></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div id="json" class="col-4 ">
-                <h2 class="fw-semibold ">Client REST Response</h2>
-                <pre>{{ json }}</pre>
-            </div>
+            <section class="col-6">
+                <div id="json" class="d-flex align-items-center flex-column">
+                    <h4 class=" fw-semibold ">Client REST Response</h4>
+                    <pre>{{clients}}</pre>
+                </div>
+            </section>
+            
         </div>
     </main>
-    <footer></footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../Js/manager.js"></script>
+    <footer class="d-flex justify-content-between align-items-center flex-wrap">
+        <div class="col-md-6 col-lg-3 text-center divFooter">
+          <h3>Location</h3>
+          <p class="fw-bold">Carson, California 90810·EE. UU.</p>
+        </div>
+        <div class="d-flex flex-column m-3">
+          <h4 class="footerP text-dark">©DevPriscilaOcola</h4>
+        </div>
+        <div class="col-md-6 col-lg-3 text-center divFooter">
+          <h3>ELFER BANK</h3>
+         <a href="#"><img class="logito" src="../asset/logo-modified.png" alt=""></a>
+        </div>
+      </footer>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+                        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+                        crossorigin="anonymous"></script>
+                        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+                    <script src="../Js/manager.js"></script>
 
 </body>
 

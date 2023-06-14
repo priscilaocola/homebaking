@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+video {
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .logo {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 30rem;
+  }
+  
+  header {
+    height: 15vh;
+    background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
+  }
+  #navbar {
+    background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
+    padding: 1.3rem;
+    border-radius: 1rem;
+    box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  }
+  
+  #inputs {
+    background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
+    padding: 1.3rem;
+    border-radius: 1rem;
+    box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  }
+  
+  #navbar a {
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 1000;
+    color: white;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: rgb(36, 36, 36);
+  }
+  
+  #navbar a:hover {
+    color: rgb(234, 219, 1);
+    transform: scale(1.2);
+    transition: color 0.5s ease;
+  }
+  
+main {
+    min-height: 70vh;
+  }
+  
+  footer {
+    height: 15vh;
+    background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
+  }
+  .logito{
+    width: 3rem; 
+    height: 3rem;
+   }
+  .container{
+   
+    width: 60rem;
+    height: 25rem;
+    padding: 3rem;
+   margin-top: 3rem;
+    border-radius: 1rem;
+   background-image: url(../asset/bg-img-bank2.jpg); 
+    background-size: cover;
+  }
+  .titulos{
+    background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(235, 183, 11, 0.695) 100%);
+    padding: 0.5rem;
+  }

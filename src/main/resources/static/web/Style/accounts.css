@@ -1,34 +1,19 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body {
-  background-image: url(../asset/bg-img-bank2.jpg);
-  background-size: cover;
-}
-.logo{
-  width: 10rem;
-  height: 10rem;
+
+.logo {
+  width: 8rem;
+  height: 8rem;
   border-radius: 30rem;
 }
 
 header {
-  height: 15vh;
-  background: rgb(244, 144, 13);
+  min-height: 15vh;
   background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
 }
-
-main {
-  min-height: 75vh;
-}
-
-footer {
-  height: 10vh;
-  background: rgb(254, 241, 4);
-  background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
-}
-
 #navbar {
   background: rgb(233, 240, 27);
   background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
@@ -36,24 +21,23 @@ footer {
   border-radius: 1rem;
   box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
-#inputs{
- 
-  background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
-  padding: 1.3rem;
-  border-radius: 1rem;
-  box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+main {
+  min-height: 75vh;
 }
-
+footer {
+  min-height: 12vh;
+  background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
+}
 #navbar a {
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1000;
   color: white;
- 
   padding: 1rem;
   border-radius: 15px;
   background-color: rgb(36, 36, 36);
 }
+
 #navbar a:hover {
   color: rgb(234, 219, 1);
   transform: scale(1.2);
@@ -67,11 +51,22 @@ footer {
 #titleContainer {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
-  background: rgb(185, 249, 7);
-  background: linear-gradient(0deg, rgb(179, 141, 7) 0%, rgba(13, 13, 13, 0.695) 100%);
+  background: rgb(215, 184, 25);
+  width: 40rem;
+  padding: 1rem;
   border-radius: 1rem;
   box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
+video {
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 #imgAccount {
   width: 30rem;
   height: 20rem;
@@ -81,33 +76,29 @@ footer {
 }
 
 #accountInfo {
-  width: 30rem;
+  width: 35rem;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-weight: 800;
-  background-image: url(../asset/transactions5.jpeg);
-  background-size: cover;
-  background-color: rgba(255, 255, 255, 0.674);
+  font-weight: 18px;
 }
 
 #accountMainContainer {
-  height: 20rem;
+  width: 40rem;
   border-radius: 1rem;
-  background-image: url(../asset/transactions5.jpeg);
+ background-image: url(../asset/transactions5.jpeg); 
   background-size: cover;
+}
+.h3{
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
 }
 
 .accountContainer {
-  background: rgb(253, 253, 9);
-  border-radius: 1rem;
+  width: 20rem;
+  background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(248, 245, 56, 0.695) 100%);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1000;
-}
-
-#selectAccountBar {
-  position: relative;
-  top: 20px;
-  width: 75%;
-  background-color: rgba(255, 255, 255, 0.674);
+  margin: 1rem;
 }
 
 #selectAccountMsg {
@@ -117,49 +108,6 @@ footer {
   margin-top: 1rem !important;
 }
 
-.footerP {
-  margin: 0rem !important;
-  font-size: 18px;
-}
-@media only screen and (max-width: 1580px) {
-  #inputs{
-      display: flex;
-      flex-direction: column;
-      margin: 2rem;
-  }
-}
-@media only screen and (max-width: 1380px) {
-  header {
-      min-height: 25vh;
-  }
-  #navbar {
-      padding: 0.7rem;
-      margin: 0.3rem;
-  }
-  .Logo {
-      width: 20rem;
-      height: 80%;
-  }
-}
-@media only screen and (max-width: 1150px) {
-  header {
-      min-height: 38vh;
-      flex-direction: column;
-  }
-  .Logo {
-    width: 15rem;
-    height: 60%;
-}
-}
-@media only screen and (max-width: 520px) {
-  #navbar {
-      flex-direction: column;
-  }
-  header {
-      min-height: 50vh;
-  }
-  .Logo {
-    width: 15rem;
-    height: 60%;
-}
+.logito{
+ width: 3rem; 
 }

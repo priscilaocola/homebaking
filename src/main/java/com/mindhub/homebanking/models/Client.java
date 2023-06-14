@@ -46,7 +46,7 @@ public class Client {
         public void setEmail(String email) {
                 this.email = email;
         }
-        public long getId() {
+        public Long getId() {
                 return id;
         }
 
@@ -60,7 +60,7 @@ public class Client {
 
         public void addAccount(Account account) {
                 account.setClient(this);
-                accounts.add(account);
+                this.accounts.add(account);
         }
         @Override
         public String toString() {

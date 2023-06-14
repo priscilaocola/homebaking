@@ -3,10 +3,9 @@ let { createApp } = Vue;
 createApp({
     data() {
         return {
-            clientName: '',
-            cuentaUno: [],
-            cuentaDos: [],
-            selectCuenta: ''
+            accounts: [],
+            clients: [],
+
         }
     },
     created() {
@@ -16,13 +15,12 @@ createApp({
         loadData() {
             axios.get("http://localhost:8080/api/clients/1")
                 .then(res => {
-                    this.client = res.data
-                    this.clientName = this.client.firstName + ' ' + this.client.lastName
-                    this.cuentaUno = res.data.accounts
-                    console.log(this.cuentaUno)
-                    this.cuentaDos = res.data.accounts
+                    this.clients = res.data;
+                    console.log(this.clients)
+                    this.accounts = this.clients.accounts
                 }).catch(err => console.log(err))
-                
+
         },
     }
-}).mount("#app")
+})
+.mount("#app");

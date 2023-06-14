@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="../Style/account.css">
+    <link rel="shortcut icon" href="../asset/logo-modified.png" type="image/x-icon">
+    <title>Transaction | Elfer Bank</title>
+</head>
+
+<body>
+    <header class="d-flex justify-content-around align-items-center">
+        <img class="logo p-3" src="../asset/logo.png">
+        <div class="navbar">
+            <nav id="navbar" class="d-flex gap-5 justify-content-around">
+                <a href="./index.html">HOME</a>
+                <a href="./manager.html">ADMIN </a>
+                <a href="./accounts.html">ACOUNTS</a>
+                <a href="#">CARDS</a>
+                <a href="#">INVESTIMENT</a>
+
+            </nav>
+        </div>
+
+    </header>
+    <main id="app">
+        <video src="../asset/fondo.mp4" muted autoplay loop class=""></video>
+        <div class="container ">
+            <h1 class="text-center text-white">All Transactions</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="titulos">ID</th>
+                        <th class="titulos">AMOUNT</th>
+                        <th class="titulos">TYPE</th>
+                        <th class="titulos">DESCRIPTION</th>
+                        <th class="titulos">DATE</th>
+                        <th class="titulos">TIME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="transaction of allAccounts " :key="transaction.id" >
+                        <td>{{ transaction.id }}</td>
+                        <td>${{ transaction.amount }}</td>
+                        <td class="text-danger" v-if="transaction.type == 'CREDIT'">{{transaction.type}}</td>
+                        <td class="text-success" v-else>{{transaction.type}}</td>
+                        <td>{{transaction.description}}</td>
+                        <td>{{transaction.date.slice(0,10)}}</td>
+                        <td>{{transaction.date.slice(11,19)}}</td>
+                       
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer class="d-flex justify-content-around ">
+        <div class=" text-center ">
+            <h3>Location</h3>
+            <p class="fw-bold">Carson, California 90810·EE. UU.</p>
+        </div>
+        <div class="d-flex flex-column m-3">
+            <h4 class=" text-dark text-bg-light">©DevPriscilaOcola</h4>
+        </div>
+        <div class=" text-center">
+            <h3>Elfer Bank</h3>
+            <a href="#"><img class="logito" src="../asset/logo-modified.png" alt=""></a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../Js/account.js"></script>
+</body>
+
+</html>

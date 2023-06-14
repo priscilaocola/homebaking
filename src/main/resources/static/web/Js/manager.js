@@ -1,6 +1,6 @@
 const { createApp } = Vue;
 
-const app = createApp({
+createApp({
   data() {
     return {
       obj: {
@@ -15,34 +15,24 @@ const app = createApp({
   created() {
     this.loadData();
   },
-
   methods: {
     loadData() {
-      axios
-        .get("http://localhost:8080/clients")
+      axios.get(`http://localhost:8080/api/clients`)
         .then((response) => {
-          this.json = response.data;
-          this.clients = response.data._embedded.clients;
+          this.clients = response.data;
           console.log(this.clients);
-          this.restResponse = response;
-        })
-        .catch((error) => console.log(error));
+        }).catch(err => console.log(err))
+      
     },
     addClient() {
       this.postClients();
     },
     postClients() {
-      axios.post("http://localhost:8080/clients", this.obj).then(() => {
-        this.loadData();
-      });
-    },
-    deleteClient(id) {
-      axios.delete(id)
-        .then((res) => {
+      axios.post(`http://localhost:8080/rest/clients`, this.obj)
+        .then(() => {
           this.loadData();
         })
-        .catch((err) => console.log(err));
     },
+
   },
-});
-app.mount("#app");
+}).mount("#app");

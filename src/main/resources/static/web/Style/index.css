@@ -1,64 +1,102 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 video {
   object-fit: cover;
-    width: 100%;
-    height: 20rem;
-  }
- 
+  width: 100%;
+  height: 18rem;
+  border-radius: 1rem;
+}
+
 .logo {
-  width: 8rem;
-  height: 8rem;
-  border-radius: 30rem;
+  width: 12rem;
+  height: 11rem;
 }
 
 header {
-  min-height: 15vh;
+  min-height: 10vh;
   background: rgb(244, 144, 13);
   background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
 }
-#navbar {
+
+/* #navbar {
   background: rgb(233, 240, 27);
   background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
   padding: 1.3rem;
   border-radius: 1rem;
   box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-} 
-  #navbar a {
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 1000;
-    color: white;
-    padding: 1rem;
-    border-radius: 15px;
-    background-color: rgb(36, 36, 36)
+} */
+
+#navbar a {
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 1000;
+  color: white;
+  padding: 1rem;
+  border-radius: 15px;
+  background-color: rgb(36, 36, 36);
+  border: 2px solid yellow;
+}
+
+#navbar a:hover {
+  color: rgb(234, 219, 1);
+  transform: scale(1.2);
+  transition: color 0.5s ease;
+}
+
+main {
+  min-height: 75vh;
+
+}
+
+footer {
+  min-height: 12vh;
+  background: linear-gradient(0deg,  rgb(245, 194, 8) 100%, rgb(185, 109, 3) 0%);
+  box-shadow: rgba(3, 3, 3, 0.4) 0px 0px 0px 2px, rgba(0, 0, 0, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+.logito {
+  width: 4rem;
+}
+
+.card {
+  background: linear-gradient(0deg, rgb(15, 15, 15) 0%, rgba(13, 13, 13, 0.695) 100%);
+  box-shadow: rgba(249, 249, 4, 0.4) 0px 0px 0px 2px, rgba(239, 253, 38, 0.65) 0px 4px 6px -1px, rgb(235, 227, 3) 0px 1px 0px inset;
+}
+
+.elferbank {
+  width: 25rem;
+  margin-top: 2rem;
+}
+
+.videocarusel {
+  height: 20rem;
+
+}
+
+.video1 {
+  width: 65%;
+  object-fit: cover;
+  border-radius: 1rem;
+
+}
+
+.fondo {
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media only screen and  (max-width: 520px) {
+  video {
+    object-fit: cover;
+    width: 20rem;
+    height: 18rem;
+    border-radius: 1rem;
   }
-  
-  #navbar a:hover {
-    color: rgb(234, 219, 1);
-    transform: scale(1.2);
-    transition: color 0.5s ease;
-  }
-  main {
-    min-height: 75vh;
-  }
-  
-  footer {
-    max-height: 12vh;
-    background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
-  }
-  .logito{
-    width: 3rem; 
-   }
-   .card{
-    background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
-   }
-   .elferbank{
- width: 40rem;
- margin-top: 5rem;
-   }
- 
- 
+}

@@ -7,16 +7,16 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <link rel="stylesheet" href="../Style/accounts.css">
-  <link rel="shortcut icon" href="../asset/logo-modified.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../asset/favicon.png" type="image/x-icon">
   <title>Accounts | Elfer Bank</title>
 </head>
 
 <body>
-  <header class="d-flex justify-content-evenly">
-    <img class="logo" src="../asset/logo.png" alt="logo">
+  <header class="d-flex justify-content-around">
     <div class="navbar">
-      <nav id="navbar" class="d-flex gap-3 justify-content-around">
-        <a href="/index.html">HOME</a>
+      <img class="logo" src="../asset/logo.png" alt="logo">
+      <nav id="navbar" class="d-flex gap-4 justify-content-around flex-wrap">
+        <a href="./index.html">HOME</a>
         <a href="./manager.html">ADMIN </a>
         <a href="#">ACOUNTS</a>
         <a href="#">CARDS</a>
@@ -25,44 +25,53 @@
     </div>
 
   </header>
-  <main id="app" class="d-flex align-items-center flex-column">
-    <video src="../asset/fondo.mp4" muted autoplay loop class=""></video>
-    <div id="titleContainer" class="d-flex flex-column  justify-content-center align-items-center m-3">
-      <h1 id="mainTitle" class="text-center m-1 text-bg-dark">WELCOME {{clients.firstName}} {{clients.lastName}},</h1>
+  <main id="app">
+    <video src="../asset/fondo3 .mp4" muted autoplay loop class=""></video>
+  <div class="d-flex justify-content-center">
+    <div id="titleContainer" class=" m-3">
+      <h1 id="mainTitle" class="text-center text-white m-1 text-bg-dark">WELCOME {{client.firstName}} {{client.lastName}},</h1>
       <h3 class="text-center m-1 text-black fw-bold"> Here you can see all
         the of your accounts</h3>
     </div>
-    <div class="d-flex w-75 m-5 justify-content-evenly align-items-center">
-      <div id="accountMainContainer" class="d-flex flex-column align-items-center">
-      
-        <div id="accountInfo" class="d-flex text-center p-2 gap-1 m-2 mt-5 justify-content-center">
-          
-            <div class="accountContainer text-black p-2"  v-for="account of accounts">
-              <h3 class="h3 text-center">Balance</h3>
-              <h5>Number</h5>
-              <p>{{account.number}}</p>
-              <h5>Balance</h5>
-              <p> ${{account.balance}}</p>
-              <h5>Creation Date</h5>
-              <p>{{account.creationDate}}</p>
-              <a class="btn btn-danger" v-bind:href="`./account.html?id=${account.id}`">Transactions</a>
-            </div>
-
+  </div>
+   
+    <div class="d-flex flex-wrap justify-content-center">
+      <div id="accountMainContainer" class="d-flex m-3 gap-2">
+      <div class="accountContainer text-white  text-center p-2 gap-1 m-2 mt-5 " v-for="account of accounts">
+        <h3 class="h3 text-center">Account Balance</h3>
+        <h5>Number</h5>
+        <p>{{account.number}}</p>
+        <h5>Balance</h5>
+        <p> {{account.balance}}</p>
+        <h5>Creation Date</h5>
+        <p>{{account.creationDate}}</p>
+        <a class="btn btn-warning" v-bind:href="`./account.html?id=${account.id}`">Transactions</a>
+      </div>
+    </div>
+      <div id="loanContainer" class="d-flex  m-3">
+        <div v-if="loans.length != 0" v-for="loan of loans" class="accountContaines text-white text-center p-2 gap-1  mt-5 ">
+          <h3 class="h3 text-center">Loan </h3>
+          <p>{{loan.name}}</p>
+          <h5>Amount</h5>
+          <p>{{loan.amount.toLocaleString()}}</p>
+          <h5>Payments</h5>
+          <p>{{loan.payments}}</p>
         </div>
       </div>
     </div>
+    
   </main>
-  <footer class="d-flex justify-content-around ">
+  <footer class="d-flex justify-content-around flex-wrap ">
     <div class="m-1 text-center ">
-      <h3>Location</h3>
+      <h3 class="fw-bold">Location</h3>
       <p class="fw-bold">Carson, California 90810·EE. UU.</p>
     </div>
     <div class="d-flex flex-column m-3">
-      <h4 class=" text-dark text-bg-light">©DevPriscilaOcola</h4>
+      <h4 class=" fw-bold">©DevPriscilaOcola</h4>
     </div>
-    <div class="text-center p-1">
-      <h3>Elfer Bank</h3>
-     <a href="#"><img class="logito" src="../asset/logo-modified.png" alt=""></a>
+    <div class="text-center m-1">
+      <h3 class="text-center fw-bold ">Elfer Bank</h3>
+      <a href="#"><img class="logito" src="../asset/favicon.png" alt=""></a>
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

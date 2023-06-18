@@ -7,17 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="shortcut icon" href="../asset/logo-modified.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../asset/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../Style/manager.css">
     <title>Admin | Elfer Bank</title>
 </head>
 
 <body>
-    
-    <header class="d-flex justify-content-center gap-5">
-        <img class="logo p-3" src="../asset/logo.png" alt="logo">
+   
+    <header class="d-flex justify-content-center ">
+       
         <div class="navbar">
-            <nav id="navbar" class="d-flex gap-3 justify-content-around">
+            <img class="logo d-flex justify-content-center " src="../asset/logo.png" alt="logo">
+            <nav id="navbar" class="d-flex gap-3 justify-content-around flex-wrap">
                 <a href="./index.html">HOME</a>
                 <a href="#">ADMIN </a>
                 <a href="./accounts.html">ACOUNTS</a>
@@ -27,7 +28,7 @@
         </div>
     </header>
     <main>
-        <div id="app" class=" m-3 container ">
+        <div id="app" class="d-flex flex-column align-items-center"">
             <div class="form">
                 <h1>Client Manager</h1>
                 <form v-on:submit="addClient()">
@@ -50,7 +51,7 @@
             </div>
             <div class="table">
                 <h2 class="fw-semibold">Client List</h2>
-                <table class="table  text-center">
+                <table class="tables  text-center">
                     <thead>
                         <tr>
                             <th>First Name</th>
@@ -69,8 +70,8 @@
                     </tbody>
                 </table>
             </div>
-            <section class="col-6">
-                <div id="json" class="d-flex align-items-center flex-column">
+            <section class="m-3">
+                <div id="json" class="d-flex flex-column p-1">
                     <h4 class=" fw-semibold ">Client REST Response</h4>
                     <pre>{{clients}}</pre>
                 </div>
@@ -78,17 +79,17 @@
             
         </div>
     </main>
-    <footer class="d-flex justify-content-between align-items-center flex-wrap">
-        <div class="col-md-6 col-lg-3 text-center divFooter">
-          <h3>Location</h3>
-          <p class="fw-bold">Carson, California 90810·EE. UU.</p>
+    <footer class="d-flex justify-content-around  flex-wrap">
+        <div class=" text-center m-1">
+          <h3 class="text-center fw-bold"  >Location</h3>
+          <p class="fw-bold">Carson, California 90810·EE. UU</p>
         </div>
-        <div class="d-flex flex-column m-3">
-          <h4 class="footerP text-dark">©DevPriscilaOcola</h4>
+        <div class=" text-center ">
+          <h4 class="text-center  fw-bold m-4">©DevPriscilaOcola</h4>
         </div>
-        <div class="col-md-6 col-lg-3 text-center divFooter">
-          <h3>ELFER BANK</h3>
-         <a href="#"><img class="logito" src="../asset/logo-modified.png" alt=""></a>
+        <div class="text-center  ">
+          <h3 class="text-center  fw-bold">Elfer Bank</h3>
+         <a href="#"><img class="logito" src="../asset/favicon.png" alt=""></a>
         </div>
       </footer>
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

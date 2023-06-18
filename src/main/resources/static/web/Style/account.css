@@ -13,28 +13,21 @@ video {
     object-fit: cover;
   }
   .logo {
-    width: 10rem;
-    height: 10rem;
-    border-radius: 30rem;
+    width: 12rem;
+    height: 11rem;
+   
   }
   
   header {
-    height: 15vh;
+    min-height: 10vh;
     background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
   }
-  #navbar {
-    background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
-    padding: 1.3rem;
-    border-radius: 1rem;
-    box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-  }
-  
-  #inputs {
+  /* #navbar {
     background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
     padding: 1.3rem;
     border-radius: 1rem;
     box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-  }
+  } */
   
   #navbar a {
     text-decoration: none;
@@ -44,6 +37,7 @@ video {
     padding: 1rem;
     border-radius: 15px;
     background-color: rgb(36, 36, 36);
+    border: 2px solid yellow;
   }
   
   #navbar a:hover {
@@ -53,15 +47,16 @@ video {
   }
   
 main {
-    min-height: 70vh;
+    min-height: 65vh;
   }
   
   footer {
-    height: 15vh;
-    background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
+    min-height: 10vh;
+    background: linear-gradient(0deg,  rgb(245, 194, 8) 100%, rgb(185, 109, 3) 0%);
+    box-shadow: rgba(3, 3, 3, 0.4) 0px 0px 0px 2px, rgba(0, 0, 0, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   }
   .logito{
-    width: 3rem; 
+    width: 4rem; 
     height: 3rem;
    }
   .container{

@@ -5,17 +5,10 @@
 }
 
 body {
-  background-image: url(../asset/bank-notes-gdd2b4cd03_1280.jpg);
+  background-image: url(../asset/fondo\ cuentas.png);
   background-size: contain;
 }
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3rem;
-  justify-content: space-around;
-
-}
 
 .form {
   margin-bottom: 1rem;
@@ -61,26 +54,26 @@ h1 {
   color: rgb(255, 254, 254);
   font-size: small;
   font-weight: bold;
+  width: 20rem;
 }
 .logo {
-  width: 9rem;
-  height: 9rem;
-  border-radius: 30rem;
+  width: 12rem;
+  height: 11rem;
 }
 
 header {
-  min-height: 15vh;
+  min-height: 12vh;
   background: rgb(244, 144, 13);
   background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
 }
 
-#navbar {
+/* #navbar {
   background: rgb(233, 240, 27);
   background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
   padding: 1.3rem;
   border-radius: 1rem;
   box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-}
+} */
 
 
 #navbar a {
@@ -91,6 +84,7 @@ header {
   padding: 1rem;
   border-radius: 15px;
   background-color: rgb(36, 36, 36);
+  border: 2px solid yellow;
 }
 
 #navbar a:hover {
@@ -100,13 +94,14 @@ header {
 }
 
 footer {
-  height: 10vh;
-  background: rgb(254, 241, 4);
-  background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
+  min-height: 10vh;
+  background: linear-gradient(0deg,  rgb(245, 194, 8) 100%, rgb(185, 109, 3) 0%);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 0px 2px, rgba(0, 0, 0, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
+
 .logito {
-  width: 3rem;
+  width: 4rem;
 }
 .buttonAdd {
   border-radius: 1rem;
@@ -119,4 +114,19 @@ td {
     height: 3rem;
     margin: 1rem;
     margin-right: 1rem;
+}
+/* mediasquery */
+@media only screen and (max-width: 520px){
+  main{
+      flex-direction: column;
+  }
+  header {
+   flex-direction: column;
+
+  }
+ 
+  .table{
+    width: 20rem;
+  }
+  
 }

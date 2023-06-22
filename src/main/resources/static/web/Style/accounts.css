@@ -10,7 +10,7 @@
 }
 
 header {
-  min-height: 15vh;
+  min-height: 12vh;
   background: linear-gradient(0deg,  rgb(0, 0, 0) 0%,  rgb(245, 194, 8) 100%);
 }
 /* #navbar {
@@ -21,10 +21,10 @@ header {
   box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 } */
 main {
-  min-height: 72vh;
+  min-height: 78vh;
 }
 footer {
-  min-height: 10vh;
+  min-height: 12vh;
   background: linear-gradient(0deg,  rgb(245, 194, 8) 100%, rgb(185, 109, 3) 0%);
   box-shadow: rgba(3, 3, 3, 0.4) 0px 0px 0px 2px, rgba(0, 0, 0, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
@@ -58,13 +58,14 @@ footer {
   border-radius: 1rem;
   box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
+
 video {
   position: absolute;
   z-index: -2;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   object-fit: cover;
 }
 
@@ -78,11 +79,13 @@ video {
 
 
 #accountMainContainer {
-  width: 35rem;
-  height: 26rem;
+  width: 37rem;
+  height: 28rem;
+  padding-left: 1rem;
   border-radius: 1rem;
  background-image: url(../asset/transactions5.jpeg); 
   background-size: cover;
+  border: 2px solid rgb(247, 255, 1);
 }
 .h3{
   background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(248, 245, 56, 0.695) 100%);
@@ -94,6 +97,7 @@ video {
 .accountContainer {
   width: 16rem;
 height: 21rem;
+
 border: 1px solid yellow;
   background: linear-gradient(0deg, rgb(8, 8, 8) 0%, rgba(0, 0, 0, 0.695) 100%);
   font-family: Arial, Helvetica, sans-serif;
@@ -128,6 +132,7 @@ border: 1px solid yellow;
   width: 30rem;
   height: 20rem;
   border-radius: 1rem;
+  border: 2px solid rgb(247, 255, 1);
  background-image: url(../asset/transactions5.jpeg); 
   background-size: cover;
 }

@@ -26,8 +26,6 @@ createApp({
                     this.format = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', }); 
                     this.accounts.forEach( e => { e.balance = this.format.format(e.balance) }); 
                     this.loans.forEach( e => { e.amount = this.format.format(e.amount)}); 
-              
-                
                 }).catch(err => console.log(err))
             	
         },

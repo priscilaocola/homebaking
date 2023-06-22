@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .logo {
+    width: 12rem;
+    height: 11rem;
+  }
+  
+  header {
+    min-height: 12vh;
+    background: linear-gradient(0deg,  rgb(0, 0, 0) 0%,  rgb(245, 194, 8) 100%);
+  }
+  main {
+    min-height: 72vh;
+  }
+  footer {
+    min-height: 10vh;
+    background: linear-gradient(0deg,  rgb(245, 194, 8) 100%, rgb(185, 109, 3) 0%);
+    box-shadow: rgba(3, 3, 3, 0.4) 0px 0px 0px 2px, rgba(0, 0, 0, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  }
+  #navbar a {
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 1000;
+    color: white;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: rgb(36, 36, 36);
+    border: 2px solid yellow;
+  }
+  
+  #navbar a:hover {
+    color:yellow;
+    transform: scale(1.2);
+    transition: color 0.5s ease;
+  }
+  .logito{
+    width: 4rem; 
+   }  
+   video {
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+  /* CARDS */
+  .div-card{
+    background:#000;
+    width: 25rem;
+    height: 36rem;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 3rem;
+    background-image: url(../asset/money-gc38889a2e_1280.jpg); 
+    background-size: cover;
+ 
+  }
+ 
+  .credit-card {
+    width: 300px;
+    height: 180px;
+    border-radius: 10px;
+    position: relative;
+    perspective: 1000px;
+  }
+  
+  
+  .card-front, .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+  }
+  
+  .card-front {
+    transform: rotateY(0);
+  }
+  
+  .card-back {
+    transform: rotateY(180deg);
+  }
+  
+  .credit-card:hover .card-front {
+    transform: rotateY(180deg);
+  }
+  
+  .credit-card:hover .card-back {
+    transform: rotateY(0);
+  }
+  
+  .card-type {
+    font-size: 18px;
+    font-weight: inherit;
+    margin-top: 1rem;
+    margin-left: 9rem;
+    text-align: center;
+  }
+  
+  .card-number {
+    font-size: 19px;
+    margin-top: 3.5rem !important;
+    margin-left: 0.3rem;
+    font-weight: bold;
+  }
+  
+  .card-info {
+    color: #0b0b0b;
+    margin-top:1rem;
+    margin-left: 1rem;
+  }
+  
+  .card-holder {
+    font-size: 19px;
+    font-weight: bold;
+    text-shadow: 3px black;
+  }
+  
+  .card-expiry {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .card-back {
+    background-color: #949494da;
+    color: #030303;
+    transform: rotateY(180deg);
+   border-radius:1rem ;
+  }
+  
+  .card-cvv {
+    font-size: 24px;
+    margin-top: 40px;
+    margin-left: 20px;
+   
+  }
+   .silverBg {
+    background-image: url(../asset/Captura.PNG) !important;
+    background-size: cover;
+}
+
+.goldBg {
+    background-image: url(../asset/Captura1.PNG) !important;
+    background-size: cover;
+}
+
+.titaniumBg {
+    background-image: url(../asset/Captura3.PNG) !important;
+    background-size: cover;
+} 
+  /* CARD2 */
+  .card-holder1 {
+    font-size: 19px;
+    font-weight: bold;
+    margin-left: 0.5rem;
+    text-shadow: 3px black;
+  }
+  .card-number1 {
+    font-size: 21px;
+    margin-top: 3rem;
+    margin-left: 1.5rem;
+    font-weight: bold;
+  }
+  .debit-card {
+    width: 300px;
+    height: 180px;
+    border-radius: 10px;
+    position: relative;
+    perspective: 1000px;
+  }
+  .debit-card:hover .card-front {
+    transform: rotateY(180deg);
+  }
+  
+  .debit-card:hover .card-back {
+    transform: rotateY(0);
+  }
+  .card-inf {
+   color: #0e0e0e;
+    
+  }
+  .div-card1{
+width: 23rem;
+    height: 13rem;
+    margin: 2rem;
+    padding: 2rem;
+    
+  }
+

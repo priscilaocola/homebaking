@@ -23,6 +23,9 @@ public class Client {
 
         @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
         private Set<ClientLoan> clientLoans = new HashSet<>();
+
+        @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
+        private Set<Card> cards = new HashSet<>();
         public Client() {
         }
         public Client(String first, String last) {
@@ -72,6 +75,11 @@ public class Client {
                 clientLoan.setClient(this);
                 clientLoans.add(clientLoan);
         }
+        public  void addCard(Card card){
+                card.setClient(this);
+                this.cards.add(card);
+        }
+        public Set<Card> getCards() {return cards;}
 
         @JsonIgnore
         public Set<Loan> getLoans() {
@@ -85,10 +93,13 @@ public class Client {
         public void setClientLoans(Set<ClientLoan> clientLoans) {
                 this.clientLoans = clientLoans;
         }
+
+
         @Override
         public String toString() {
                 return firstName + " " + lastName + " " + email + " " + id;
 }
+
 
 
 }

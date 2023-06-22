@@ -20,9 +20,9 @@ createApp({
           const accounts = res.data;
           this.allAccounts = accounts.transactions
           console.log(this.allAccounts);
-
+          
           this.allAccounts.sort((a, b) => b.id - a.id);
-            
+
         }) .catch((err) => console.log(err));
     },
   },

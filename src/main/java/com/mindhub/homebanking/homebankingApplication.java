@@ -17,7 +17,7 @@ public class homebankingApplication {
 		SpringApplication.run(homebankingApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner initData (ClientRepository clientRepository, AccountRepository accountRepository, TransactionRepository transactionRepository,LoanRepository loanRepository, ClientLoanRepository clientLoanRepository){
+	public CommandLineRunner initData (ClientRepository clientRepository, AccountRepository accountRepository, TransactionRepository transactionRepository,LoanRepository loanRepository, ClientLoanRepository clientLoanRepository,CardRepository cardRepository){
 		return args -> {
 
 			Client client1= new Client("Melba","Morel","melba@mindhub.com");
@@ -27,7 +27,7 @@ public class homebankingApplication {
 			Account account2 = new Account("VIN002", LocalDate.now().plusDays(1),7500.35);
 			Account account3 = new Account("VIN003", LocalDate.now().plusDays(2),500000.50);
 			Account account4 = new Account("VIN004", LocalDate.now().plusDays(3),1050000.80);
-			
+
 			clientRepository.save(client1);
 			client1.addAccount(account1);
 			client1.addAccount(account2);
@@ -46,6 +46,7 @@ public class homebankingApplication {
 			Transaction transaction3 = new Transaction(-50000.0,"Debit Automatic",LocalDateTime.now(),TransactionType.DEBIT);
 			Transaction transaction4 = new Transaction(75000.0, "Salary work", LocalDateTime.now(), TransactionType.CREDIT);
 
+
 			account1.addTransactions(transaction1);
 			account1.addTransactions(transaction2);
 			account1.addTransactions(transaction3);
@@ -57,11 +58,11 @@ public class homebankingApplication {
 			transactionRepository.save(transaction4);
 
 
+
 			Transaction transaction5 = new Transaction(-500.0,"Car fee",LocalDateTime.now(),TransactionType.DEBIT);
 			Transaction transaction6 = new Transaction(1000.0,"super market",LocalDateTime.now(), TransactionType.CREDIT);
 			Transaction transaction7 = new Transaction(-500.0,"retail purchase",LocalDateTime.now(),TransactionType.DEBIT);
 			Transaction transaction8 = new Transaction(7500.0, "Salary work", LocalDateTime.now(), TransactionType.CREDIT);
-
 
 			account2.addTransactions(transaction5);
 			account2.addTransactions(transaction6);
@@ -73,12 +74,10 @@ public class homebankingApplication {
 			transactionRepository.save(transaction7);
 			transactionRepository.save(transaction8);
 
-
 			Transaction transaction9 = new Transaction(-1500.0,"Sundy",LocalDateTime.now(),TransactionType.DEBIT);
 			Transaction transaction10 =new Transaction(1000.0,"super market",LocalDateTime.now(), TransactionType.CREDIT);
 			Transaction transaction11= new Transaction(-5500.0,"Airplane",LocalDateTime.now(),TransactionType.DEBIT);
 			Transaction transaction12= new Transaction(10000.0, "debit", LocalDateTime.now(), TransactionType.CREDIT);
-
 
 			account3.addTransactions(transaction9);
 			account3.addTransactions(transaction10);
@@ -95,7 +94,6 @@ public class homebankingApplication {
 			Transaction transaction14 = new Transaction(10000.0,"super market",LocalDateTime.now(), TransactionType.CREDIT);
 			Transaction transaction15 = new Transaction(-55000.0,"Airplane",LocalDateTime.now(),TransactionType.DEBIT);
 			Transaction transaction16 = new Transaction(150000.0, "debit", LocalDateTime.now(), TransactionType.CREDIT);
-
 
 			account4.addTransactions(transaction13);
 			account4.addTransactions(transaction14);
@@ -133,6 +131,19 @@ public class homebankingApplication {
 			clientLoanRepository.save (clientLoan2);
 			clientLoanRepository.save (clientLoan3);
 			clientLoanRepository.save (clientLoan4);
+
+
+			Card card1 = new Card( CardType.DEBIT, CardColor.GOLD, "1234-4678-9876-5432", LocalDate.now(), LocalDate.now().plusYears(5), 125,client1.getFirstName() + " " + client1.getLastName());
+			Card card2 = new Card( CardType.CREDIT, CardColor.TITANIUM,"3445-4454-7588-9234", LocalDate.now(), LocalDate.now().plusYears(5), 753,client1.getFirstName()+ " " + client1.getLastName());
+			Card card3 = new Card( CardType.CREDIT, CardColor.SILVER, "4547-6534-4391-2795", LocalDate.now(), LocalDate.now().plusYears(5) ,394,client2.getFirstName()+ " " + client2.getLastName());
+
+			client1.addCard(card1);
+			client1.addCard(card2);
+			client2.addCard(card3);
+
+			cardRepository.save(card1);
+			cardRepository.save(card2);
+			cardRepository.save(card3);
 
 		};
 

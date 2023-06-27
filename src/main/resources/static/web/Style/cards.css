@@ -14,7 +14,7 @@
     background: linear-gradient(0deg,  rgb(0, 0, 0) 0%,  rgb(245, 194, 8) 100%);
   }
   main {
-    min-height: 72vh;
+    min-height: 68vh;
   }
   footer {
     min-height: 10vh;
@@ -53,7 +53,7 @@
   .div-card{
     background:#000;
     width: 25rem;
-    height: 36rem;
+    height: 35rem;
     margin: 2rem;
     padding: 2rem;
     border-radius: 3rem;
@@ -194,4 +194,23 @@ width: 23rem;
     padding: 2rem;
     
   }
-
+ 
+ 
+  @media only screen and  (max-width: 520px){
+    .div-card{
+      background:#000;
+      width: 20rem;
+      height: 35rem;
+      margin: 0;
+      padding: 0;
+      border-radius: 1rem;
+      background-image: url(../asset/money-gc38889a2e_1280.jpg); 
+      background-size: cover;
+  }
+  .logo {
+    width: 9rem;
+    height: 8rem;
+    justify-content: center;
+    margin-left: 5rem;
+  }
+}

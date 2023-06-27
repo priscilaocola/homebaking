@@ -16,6 +16,7 @@ public class ClientDTO {
     private List<ClientLoanDTO> loans;
     private Set<CardDTO> cards = new HashSet<>();
 
+
     public  ClientDTO(Client client){
         this.id = client.getId();
         this.firstName =client.getFirstName();
@@ -45,5 +46,6 @@ public class ClientDTO {
         return loans;
     }
     public Set<CardDTO> getCards() {return cards;}
+
 }
 

@@ -14,7 +14,7 @@ createApp({
     },
     methods: {
         loadData() {
-            axios.get(`http://localhost:8080/api/clients/1`)
+            axios.get(`http://localhost:8080/api/clients/current`)
                 .then(res => {
                     this.client = res.data
                     this.cards = this.client.cards.sort((a,b) => a.id - b.id)
@@ -30,6 +30,13 @@ createApp({
             } else if (card.color == 'TITANIUM') {
                 return 'titaniumBg'
             }
+        },
+        logout(){
+            axios.post("/api/logout")
+            .then((res) => {
+                window.location.href="/web/pages/index.html"
+            }).catch(err => console.log(err))
         }
+
     }
 }).mount("#app")

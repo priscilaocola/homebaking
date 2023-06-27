@@ -1,0 +1,209 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.logo {
+    width: 12rem;
+    height: 11rem;
+  }
+  
+  header {
+    min-height: 12vh;
+    background: linear-gradient(0deg,  rgb(0, 0, 0) 0%,  rgb(245, 194, 8) 100%);
+  }
+  /* #navbar {
+    background: rgb(233, 240, 27);
+    background: linear-gradient(0deg, rgba(247, 198, 3, 0.864) 0%,  rgb(247, 220, 18) 100%);
+    padding: 1.3rem;
+    border-radius: 1rem;
+    box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  } */
+  main {
+    min-height: 75vh;
+    margin-top: 2rem;
+	margin-bottom: 1rem;
+  }
+  footer {
+    min-height: 12vh;
+    background: linear-gradient(0deg,  rgb(245, 194, 8) 100%, rgb(185, 109, 3) 0%);
+    box-shadow: rgba(3, 3, 3, 0.4) 0px 0px 0px 2px, rgba(0, 0, 0, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  }
+  #navbar a {
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 1000;
+    color: white;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: rgb(36, 36, 36);
+    border: 2px solid yellow;
+  }
+  
+  #navbar a:hover {
+    color:yellow;
+    transform: scale(1.2);
+    transition: color 0.5s ease;
+  }
+  .logito{
+    width: 4rem; 
+   }
+body{
+	margin:0;
+	color:#6a6f8c;
+	background-image: url(../asset/favicon.png);
+	font:600 16px/18px 'Open Sans',sans-serif;
+}
+*,:after,:before{box-sizing:border-box}
+.clearfix:after,.clearfix:before{content:'';display:table}
+.clearfix:after{clear:both;display:block}
+a{color:white;text-decoration:none}
+
+.login-wrap{
+	width:100%;
+	margin:auto;
+	max-width:505px;
+	min-height:650px;
+	position:relative;
+	background:url(../asset/bg-img-bank2.jpg) no-repeat center;
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+.login-html{
+	width:100%;
+	height:100%;
+	position:absolute;
+	padding:90px 70px 50px 70px;
+	background:rgba(27,27,27,.6);
+}
+.login-html .sign-in-htm,
+.login-html .sign-up-htm{
+	top:1.5rem;
+	left:0;
+	right:0;
+	bottom:0;
+	position:absolute;
+	transform:rotateY(180deg);
+	backface-visibility:hidden;
+	transition:all .4s linear;
+}
+.login-html .sign-in,
+.login-html .sign-up,
+.login-form .group .check{
+	display:none;
+}
+.login-html .tab,
+.login-form .group .label,
+.login-form .group .button{
+	text-transform:uppercase;
+}
+.login-html .tab{
+	font-size:22px;
+	margin-right:15px;
+	padding-bottom:5px;
+	margin:0 15px 10px 0;
+	display:inline-block;
+	border-bottom:2px solid transparent;
+}
+.login-html .sign-in:checked + .tab,
+.login-html .sign-up:checked + .tab{
+	color:#fff;
+	border-color:#eee711;
+}
+.login-form{
+	min-height:345px;
+	position:relative;
+	perspective:1000px;
+	transform-style:preserve-3d;
+}
+.login-form .group{
+	margin-bottom:15px;
+}
+.login-form .group .label,
+.login-form .group .input,
+.login-form .group .button{
+	width:100%;
+	color:#050505;
+	display:block;
+}
+.login-form .group .input,
+.login-form .group .button{
+	border:none;
+	padding:15px 20px;
+	border-radius:25px;
+	background:rgba(212, 210, 210, 0.83);
+}
+.login-form .group .label{
+	color:#fffffffd;
+	font-size:13px;
+}
+.login-form .group .button{
+	background:#f2f530;
+    border: 2px solid white;
+}
+.login-form .group label .icon{
+	width:15px;
+	height:15px;
+	border-radius:2px;
+	position:relative;
+	display:inline-block;
+	background:rgb(244, 244, 244);
+}
+.login-form .group label .icon:before,
+.login-form .group label .icon:after{
+	content:'';
+	width:10px;
+	height:2px;
+	background:#fff;
+	position:absolute;
+	transition:all .2s ease-in-out 0s;
+}
+.login-form .group label .icon:before{
+	left:3px;
+	width:5px;
+	bottom:6px;
+	transform:scale(0) rotate(0);
+}
+.login-form .group label .icon:after{
+	top:6px;
+	right:0;
+	transform:scale(0) rotate(0);
+}
+.login-form .group .check:checked + label{
+	color:#fff;
+}
+.login-form .group .check:checked + label .icon{
+	background:#121111;
+}
+.login-form .group .check:checked + label .icon:before{
+	transform:scale(1) rotate(45deg);
+}
+.login-form .group .check:checked + label .icon:after{
+	transform:scale(1) rotate(-45deg);
+}
+.login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
+	transform:rotate(0);
+}
+.login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
+	transform:rotate(0);
+}
+
+.hr{
+	height:2px;
+	margin:50px 0 50px 0;
+	background:rgb(247, 244, 244);
+}
+.foot-lnk{
+	text-align:center;
+}
+@media only screen and  (max-width: 520px) {
+    .login-wrap{
+		width:100%;
+		margin:auto;
+		max-width:306px;
+		min-height:615px;
+		position:relative;
+		background:url(../asset/bg-img-bank2.jpg) no-repeat center;
+		box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+	}
+  }
+  

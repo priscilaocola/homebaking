@@ -85,20 +85,20 @@ video {
   border-radius: 1rem;
  background-image: url(../asset/transactions5.jpeg); 
   background-size: cover;
-  border: 2px solid rgb(247, 255, 1);
+  border: 3px solid rgb(247, 255, 1);
 }
 .h3{
   background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(248, 245, 56, 0.695) 100%);
   color: black;
   padding: 0.4rem;
   border-radius: 2rem;
+  border: 2px solid white;
 }
 
 .accountContainer {
   width: 16rem;
 height: 21rem;
-
-border: 1px solid yellow;
+border: 2px solid yellow;
   background: linear-gradient(0deg, rgb(8, 8, 8) 0%, rgba(0, 0, 0, 0.695) 100%);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1000;

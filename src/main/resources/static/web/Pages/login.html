@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<link rel="stylesheet" href="../Style/login.css">
+<link rel="shortcut icon" href="../asset/favicon.png" type="image/x-icon">
+    <title>Login | Elfer Bank</title>
+</head>
+<body>
+    <header class="d-flex justify-content-around flex-wrap">
+        <div class="navbar">
+            <img class="logo" src="../asset/logo.png">
+            <nav id="navbar" class="d-flex gap-4 justify-content-around flex-wrap">
+                <a href="./index.html">HOME</a>
+            </nav>
+        </div>
+    </header>
+    <main id="app">
+        <div class="login-wrap">
+            
+            <div class="login-html">
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                <div class="login-form">
+                    <div class="sign-in-htm">
+                        <div class="group">
+                            <label for="user" class="label" >Username</label>
+                            <input id="user" type="text" class="input" v-model="email">
+                        </div>
+                        <div class="group">
+                            <label for="password" class="label">Password</label>
+                            <input id="password" type="password" class="input" data-type="password" v-model="password">
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Sign In" @click="login()">
+                        </div>
+                        <div class="hr"></div>
+                    </div>
+                    <div class="sign-up-htm">
+                        <div class="group">
+                            <label for="name" class="label">First Name</label>
+                            <input id="name" type="text" class="input" v-model="registerFirstName">
+                        </div>
+                        <div class="group">
+                            <label for="lastName" class="label">Last Name</label>
+                            <input id="lastName" type="text" class="input" data-type="password" v-model="registerLastName">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Password</label>
+                            <input id="pass" type="password" class="input" data-type="password" v-model="registerPassword">
+                        </div>
+                        <div class="group">
+                            <label for="mail" class="label">Email Address</label>
+                            <input id="mail" type="email" class="input" v-model="registerEmail">
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" @click.prevent="register()" value="Sign Up">
+                        </div>
+                        <div class="hr"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer class="d-flex justify-content-around flex-wrap ">
+        <div class=" textos text-center  m-1">
+            <h3 class="text-center fw-bold text-black">Location</h3>
+            <p class="text-center fw-bold  m-1 text-black">Carson, California 90810·EE. UU.</p>
+        </div>
+        <div class="text-center ">
+            <h3 class="text-center fw-bold text-black m-1">Elfer Bank</h3>
+            <a href="#"><img class="logito" src="../asset/favicon.png" alt=""></a>
+        </div>
+        <div class="text-center h1">
+            <h3 class="text-dark fw-bold m-2">©DevPriscilaOcola</h3>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>

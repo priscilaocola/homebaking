@@ -31,7 +31,7 @@ header {
   box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 } */
 .navbar{
-  min-height: 10vh;
+  min-height: 9vh;
 }
 
 #navbar a {
@@ -53,7 +53,7 @@ header {
 }
 
 main {
-  min-height: 75vh;
+  min-height: 72vh;
   background-image: url(../asset/fondo\ cuentas.png);
   object-fit: cover;
 }

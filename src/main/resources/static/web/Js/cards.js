@@ -31,12 +31,27 @@ createApp({
                 return 'titaniumBg'
             }
         },
-        logout(){
-            axios.post("/api/logout")
-            .then((res) => {
-                window.location.href="/web/pages/index.html"
-            }).catch(err => console.log(err))
-        }
-
+        logout() {
+			Swal.fire({
+				title: 'Are you sure that you want to log out',
+				inputAttributes: {
+					autocapitalize: 'off',
+				},
+				showCancelButton: true,
+				confirmButtonText: 'Sure',
+				showLoaderOnConfirm: true,
+				preConfirm: login => {
+					return axios
+						.post('/api/logout')
+						.then(response => {
+							window.location.href = '/web/pages/index.html';
+						})
+						.catch(error => {
+							console.log(error);
+						});
+				},
+     
+        }) 
+    }
     }
 }).mount("#app")

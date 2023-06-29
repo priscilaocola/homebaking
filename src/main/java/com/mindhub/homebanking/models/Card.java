@@ -28,16 +28,17 @@ import java.time.LocalDate;
 
        public Card (){}
         public Card( CardType type, CardColor color, String number, LocalDate fromDate, LocalDate thruDate, int cvv, String cardHolder) {
+            this.cardHolder =cardHolder;
             this.type = type;
             this.color = color;
             this.number = number;
             this.fromDate = fromDate;
             this.thruDate = thruDate;
             this.cvv = cvv;
-            this.cardHolder =cardHolder;
+
         }
 
-        public long getId() {return id;}
+    public long getId() {return id;}
 
         public String getCardHolder() {return cardHolder;}
         public void setCardHolder(String cardHolder) {this.cardHolder = cardHolder;}

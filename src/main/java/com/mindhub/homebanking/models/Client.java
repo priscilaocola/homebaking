@@ -40,7 +40,7 @@ public class Client {
 
         }
 
-        public String getFirstName() {
+        public  String getFirstName() {
                 return firstName;
         }
         public void setFirstName(String firstName) {

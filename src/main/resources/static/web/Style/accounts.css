@@ -22,6 +22,10 @@ header {
 } */
 main {
   min-height: 78vh;
+  background-image: url(../asset/digital-world.jpg);
+  background-size: cover;
+
+  
 }
 footer {
   min-height: 12vh;
@@ -53,7 +57,8 @@ footer {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
   background: rgb(215, 184, 25);
-  width: 40rem;
+  width: 50rem;
+  height: 8rem;
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
@@ -79,8 +84,8 @@ video {
 
 
 #accountMainContainer {
-  width: 37rem;
-  height: 28rem;
+  width: 50rem;
+  height: 35rem;
   padding-left: 1rem;
   border-radius: 1rem;
  background-image: url(../asset/transactions5.jpeg); 
@@ -97,7 +102,7 @@ video {
 
 .accountContainer {
   width: 16rem;
-height: 21rem;
+height: 25rem;
 border: 2px solid yellow;
   background: linear-gradient(0deg, rgb(8, 8, 8) 0%, rgba(0, 0, 0, 0.695) 100%);
   font-family: Arial, Helvetica, sans-serif;
@@ -120,7 +125,7 @@ border: 2px solid yellow;
 /* loans */
 .accountContaines {
   width: 12rem;
-  height: 15rem;
+  height: 16rem;
   background: linear-gradient(0deg, rgb(8, 8, 8) 0%, rgba(0, 0, 0, 0.695) 100%);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1000;
@@ -130,9 +135,27 @@ border: 2px solid yellow;
 }
 #loanContainer {
   width: 30rem;
-  height: 20rem;
+  height: 22rem;
   border-radius: 1rem;
   border: 2px solid rgb(247, 255, 1);
  background-image: url(../asset/transactions5.jpeg); 
   background-size: cover;
+}
+.shadow__btn{
+  height: 4rem;
+  padding: 1rem;
+  margin-top: 1rem;
+border-radius: 1rem;
+  background: linear-gradient(0deg,  rgb(164, 163, 158) 90%, rgb(243, 163, 5) 10%);
+}
+.shadow__btn {
+  background: rgb(190, 7, 3);
+  box-shadow: 0 0 25px rgb(248, 197, 15);
+}
+
+.shadow__btn:hover {
+  box-shadow: 0 0 5px rgb(255, 28, 3),
+              0 0 25px rgb(248, 178, 13),
+              0 0 50px rgb(251, 123, 12),
+              0 0 100px rgb(238, 70, 3);
 }

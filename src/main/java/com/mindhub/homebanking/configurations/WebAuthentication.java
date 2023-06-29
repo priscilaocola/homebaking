@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
     @Autowired
-    ClientRepository clientRepository;
+    private ClientRepository clientRepository;
     @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();

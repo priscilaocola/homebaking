@@ -19,8 +19,7 @@
     <div class="navbar">
       <img class="logo" src="../asset/logo.png" alt="logo">
       <nav id="navbar" class="d-flex gap-4 justify-content-around flex-wrap">
-        <a href="./index.html">HOME</a>
-        <a href="#">ACOUNTS & LOANS</a>
+        <a href="#">ACCOUNTS & LOANS</a>
         <a href="./cards.html">CARDS</a>
         </nav>
         <button @click="logout()" class="btn btn-danger fw-bold  border-black m-5">LOGOUT</button>
@@ -28,32 +27,32 @@
 
   </header>
   <main>
-      <video autoplay loop muted>
-        <source src="../asset/fondo3 .mp4" type="video/mp4">
-      </video>
+    
   <div class="d-flex justify-content-center">
-    <div id="titleContainer" class=" m-3">
-      <h1 id="mainTitle" class="text-center text-white m-1 text-bg-dark ">WELCOME {{client.firstName}} {{client.lastName}}</h1>
+    <div id="titleContainer" class="m-3 d-flex justify-content-around">
+     <h1 id="mainTitle" class=" text-white m-1 text-bg-dark ">WELCOME {{client.firstName}} {{client.lastName}}</h1>
+     <template v-if="accounts.length !== 3">
+      <button @click="createAccount()" class="shadow__btn fs-6 fw-bold text-light">CREATE ACCOUNTS</button>
+     </template> 
     </div>
   </div>
-   
-    <div class="d-flex flex-wrap justify-content-center">
+    <div class="d-flex flex-wrap justify-content-center flex-column align-content-center">
       <div id="accountMainContainer" class="d-flex m-3 gap-2">
       <div class="accountContainer text-white  text-center p-2 gap-1 m-2 mt-5 " v-for="account of accounts">
         <h3 class="h3 text-center border-light">Account Balance</h3>
         <h5>Number</h5>
-        <p>{{account.number}}</p>
+        <p class="fs-3 text-bg-dark">{{account.number}}</p>
         <h5>Balance</h5>
         <p> {{account.balance}}</p>
         <h5>Creation Date</h5>
         <p>{{account.creationDate}}</p>
-        <a class="btn btn-warning fw-bold  border-light" v-bind:href="`./account.html?id=${account.id}`">Transactions</a>
+        <a class="btn btn-warning fw-bold fs-5  border-light" v-bind:href="`./account.html?id=${account.id}`">Transactions</a>
       </div>
     </div>
-      <div id="loanContainer" class="d-flex  m-3">
+      <div id="loanContainer" class="d-flex align-content-center  m-3">
         <div v-if="loans.length != 0" v-for="loan of loans" class="accountContaines text-white text-center p-2 gap-1  mt-5 ">
           <h3 class="h3 text-center">Loan </h3>
-          <p>{{loan.name}}</p>
+          <p class="fs-4 text-bg-dark">{{loan.name}}</p>
           <h5>Amount</h5>
           <p>{{loan.amount.toLocaleString()}}</p>
           <h5>Payments</h5>
@@ -82,6 +81,7 @@
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js"></script>
   <script src="../js/accounts.js"></script>
 </body>
 

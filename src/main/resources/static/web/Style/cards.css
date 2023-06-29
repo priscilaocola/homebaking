@@ -14,10 +14,11 @@
     background: linear-gradient(0deg,  rgb(0, 0, 0) 0%,  rgb(245, 194, 8) 100%);
   }
   main {
-    min-height: 68vh;
+    min-height: 75vh;
+  
   }
   footer {
-    min-height: 10vh;
+    min-height: 12vh;
     background: linear-gradient(0deg,  rgb(245, 194, 8) 100%, rgb(185, 109, 3) 0%);
     box-shadow: rgba(3, 3, 3, 0.4) 0px 0px 0px 2px, rgba(0, 0, 0, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   }
@@ -30,6 +31,28 @@
     border-radius: 15px;
     background-color: rgb(36, 36, 36);
     border: 2px solid yellow;
+  }
+  .botonadd{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 1000;
+    color: white;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: rgb(36, 36, 36);
+    border: 2px solid yellow;
+  }
+  .botonadd a:hover{
+    color:yellow;
+    transform: scale(1.2);
+    transition: color 0.5s ease;
+  }
+  .shadow__btn{
+    height: 8rem;
+    padding: 1rem;
+    margin-top: 5rem;
+border-radius: 1rem;
+    background: linear-gradient(0deg,  rgb(164, 163, 158) 90%, rgb(243, 163, 5) 10%);
   }
   
   #navbar a:hover {
@@ -52,10 +75,10 @@
   /* CARDS */
   .div-card{
     background:#000;
-    width: 25rem;
-    height: 35rem;
+    width: 23rem;
+    min-height: 43rem;
     margin: 2rem;
-    padding: 2rem;
+    padding: 2rem; 
     border-radius: 3rem;
     background-image: url(../asset/money-gc38889a2e_1280.jpg); 
     background-size: cover;
@@ -161,7 +184,7 @@
     font-size: 19px;
     font-weight: bold;
     margin-left: 0.5rem;
-    text-shadow: 3px black;
+    text-shadow: 3px rgb(255, 254, 254);
   }
   .card-number1 {
     font-size: 21px;
@@ -189,10 +212,24 @@
   }
   .div-card1{
 width: 23rem;
-    height: 13rem;
+    height: 43rem;
     margin: 2rem;
     padding: 2rem;
-    
+    border-radius: 3rem;
+    background-image: url(../asset/money-gc38889a2e_1280.jpg); 
+    background-size: cover;
+  }
+
+  .shadow__btn {
+    background: rgb(30, 30, 29);
+    box-shadow: 0 0 25px rgb(248, 197, 15);
+  }
+  
+  .shadow__btn:hover {
+    box-shadow: 0 0 5px rgb(255, 28, 3),
+                0 0 25px rgb(248, 178, 13),
+                0 0 50px rgb(251, 123, 12),
+                0 0 100px rgb(238, 70, 3);
   }
  
  
@@ -213,4 +250,17 @@ width: 23rem;
     justify-content: center;
     margin-left: 5rem;
   }
+  .contenedor {
+    flex-direction: column;
+  }
+  .div-card1{
+    background:#000;
+    width: 20rem;
+    height: 35rem;
+    margin: 0;
+    padding: 0;
+    border-radius: 1rem;
+    background-image: url(../asset/money-gc38889a2e_1280.jpg); 
+    background-size: cover;
+}
 }

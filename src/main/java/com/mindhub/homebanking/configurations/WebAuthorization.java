@@ -33,7 +33,9 @@ class WebAuthorization {
                 .antMatchers("/h2-console").hasAuthority("ADMIN")
                 .antMatchers("/web/pages/accounts.html").hasAuthority("CLIENT")
                 .antMatchers("/web/pages/account.html").hasAuthority("CLIENT")
-                .antMatchers("/web/pages/cards.html").hasAuthority("CLIENT");
+                .antMatchers("/web/pages/cards.html").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST,"/api/clients/current/cards").hasAnyAuthority("CLIENT", "ADMIN")
+                .antMatchers(HttpMethod.POST,"/api/clients/current/accounts").hasAnyAuthority("CLIENT", "ADMIN");
 
         http.formLogin()
                 .usernameParameter("email")

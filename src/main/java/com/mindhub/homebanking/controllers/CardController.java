@@ -79,7 +79,7 @@ public class CardController {
         cardRepository.save(newCard);
 
 
-        return  new ResponseEntity<>("Este mensaje no sirve para nada", HttpStatus.CREATED);
+        return  new ResponseEntity<>( HttpStatus.CREATED);
 
     }
 }

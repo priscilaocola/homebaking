@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
-
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
@@ -58,11 +57,22 @@ public class ClientController {
 
             @RequestParam String email, @RequestParam String password) {
 
-        if (firstName.isBlank() || lastName.isBlank() || email.isBlank() || password.isBlank()) {
+        if (firstName.isBlank()) {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
-        }if(clientRepository.findByEmail(email) !=null) {
-            return new ResponseEntity<>("name alraedy in user",HttpStatus.FORBIDDEN);
         }
+        if (lastName.isBlank()) {
+            return new ResponseEntity<>("Your last name is missing.", HttpStatus.FORBIDDEN);
+        }
+        if (email.isBlank()) {
+            return new ResponseEntity<>("Your email is missing.", HttpStatus.FORBIDDEN);
+        }
+        if (password.isBlank()) {
+                return new ResponseEntity<> ("Your password is missing", HttpStatus.FORBIDDEN);
+            }
+        if(clientRepository.findByEmail(email) !=null) {
+            return new ResponseEntity<>("Email already in use",HttpStatus.FORBIDDEN);
+        }
+
         Client newClient = new Client(firstName, lastName, email, passwordEncoder.encode(password));
         clientRepository.save(newClient);
         String accountNumber = randomNumber();

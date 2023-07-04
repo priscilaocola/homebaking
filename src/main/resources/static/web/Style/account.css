@@ -62,7 +62,7 @@ main {
   .container{
    
     width: 50rem;
-    height: 20rem;
+    min-height: 25rem;
     padding: 1rem;
    margin: 2rem;
     border-radius: 1rem;
@@ -91,6 +91,30 @@ main {
     margin: 1rem;
     border-radius: 2rem;
     border: 1px solid yellow;
+  }
+  .containerTrasf{
+    width: 20rem;
+    height: 9rem;
+padding: 1rem;
+    border-radius: 1rem;
+   background-image: url(../asset/silver.jpg); 
+    background-size: cover;
+  }
+  .container2{
+    width: 25rem;
+    min-height: 30rem;
+    padding: 2rem;
+    border-radius: 1rem;
+   background-image: url(../asset/bg-img-bank2.jpg); 
+    background-size: cover;
+  }
+  .containerTrasf1{
+    width: 20rem;
+    height: 23rem;
+    padding: 1rem;
+    border-radius: 1rem;
+   background-image: url(../asset/silver.jpg); 
+    background-size: cover;
   }
   
   @media only screen and  (max-width: 520px) {

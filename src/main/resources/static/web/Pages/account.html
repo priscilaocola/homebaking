@@ -21,6 +21,7 @@
                 <nav id="navbar" class="d-flex gap-4 justify-content-around flex-wrap ">
                     <a href="./accounts.html">ACOUNTS & LOANS</a>
                     <a href="./cards.html">CARDS</a>
+                    <a href="./transfers.html">TRANSFERS</a>
                 </nav>
                 <button @click="logout()" class="btn btn-danger fw-bold  border-black m-5">LOGOUT</button>
             </div>
@@ -46,7 +47,8 @@
                     <tbody>
                         <tr v-for="transaction of allAccounts " :key="transaction.id">
                             <td class="text-center">{{ transaction.id }}</td>
-                            <td class="text-center">${{ transaction.amount }}</td>
+                            <td class="text-center"><span v-if="transaction.type == 'DEBITO'">-</span>
+                                ${{ transaction.amount }}</td>
                             <td class="text-center text-success" v-if="transaction.type == 'CREDIT'">
                                 {{transaction.type}}</td>
                             <td class="text-center text-danger" v-else>{{transaction.type}}</td>

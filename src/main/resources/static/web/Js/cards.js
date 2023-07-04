@@ -41,8 +41,7 @@ createApp({
 				confirmButtonText: 'Sure',
 				showLoaderOnConfirm: true,
 				preConfirm: login => {
-					return axios
-						.post('/api/logout')
+					return axios.post('/api/logout')
 						.then(response => {
 							window.location.href = '/web/pages/index.html';
 						})

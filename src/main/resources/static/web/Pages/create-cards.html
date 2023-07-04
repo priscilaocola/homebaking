@@ -17,7 +17,8 @@
           <img class="logo" src="../asset/logo.png">
           <nav id="navbar" class="d-flex gap-4 justify-content-around flex-wrap">
             <a href="./accounts.html">ACOUNTS & LOANS</a>
-            <a href="./cards.html">MY CARDS </a>
+            <a href="./cards.html"> CARDS </a>
+            <a href="./transfers.html">TRANSFERS</a>
           </nav>
         </div>
     </header>
@@ -33,19 +34,19 @@
             </div>
             <div class="d-flex justify-content-center align-items-center">
             <div class="d-flex flex-column align-items-center justify-content-center div-cards-create">
-              <p  class="fs-4 text-bg-warning">Type Card</p>
+              <p  class="fs-4 text-bg-warning border border-white p-1 mb-3  rounded  ">Type Card</p>
                 <select  v-model="type" name="type" id="type" >
                   <option value="DEBIT">DEBIT</option>
                   <option value="CREDIT">CREDIT</option>
                 </select>
-                <p class="fs-4 text-bg-warning mt-3">Color Card</p>
+                <p class="fs-4 text-bg-warning rounded mt-3 border border-white p-1 mb-3 ">Color Card</p>
                 <select v-model="color" name="color" id="color" >
                 
                   <option value="SILVER">SILVER</option>
                   <option value="GOLD">GOLD</option>
                   <option value="TITANIUM">TITANIUM</option>
                 </select>
-                <button class=" btn btn-warning fw-bold border-light text-black mt-5" @click.prevent="createCards()">Request Card</button>
+                <button class=" fs-5 btn btn-warning fw-bold border-light text-black mt-4 p-2" @click.prevent="cardsNews()">Request Card</button>
 
             </div>
         </div>
@@ -55,13 +56,14 @@
               <h3 class="text-center fw-bold">Location</h3>
               <p class="text-center fw-bold  m-1">Carson, California 90810·EE. UU.</p>
             </div>
-            <div class="d-flex flex-column m-3">
-              <h4 class="text-dark fw-bold m-4">©DevPriscilaOcola</h4>
-            </div>
             <div class="text-center  m-1">
               <h3 class="text-center fw-bold  m-1">Elfer Bank</h3>
               <a href="#"><img class="logito" src="../asset/favicon.png" alt=""></a>
             </div>
+            <div class="d-flex flex-column ">
+              <h4 class="text-dark fw-bold m-4">©DevPriscilaOcola</h4>
+            </div>
+            
           </footer>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

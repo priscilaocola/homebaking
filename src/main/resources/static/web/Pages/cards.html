@@ -19,7 +19,8 @@
         <img class="logo" src="../asset/logo.png">
         <nav id="navbar" class="d-flex gap-4 justify-content-around flex-wrap">
           <a href="./accounts.html">ACOUNTS & LOANS</a>
-          <a href="#">MY CARDS </a>
+          <a href="#">CARDS </a>
+          <a href="./transfers.html">TRANSFERS</a>
         </nav>
         <button @click="logout()" class="btn btn-danger fw-bold  border-black m-5">LOGOUT</button>
       </div>
@@ -37,8 +38,8 @@
       </template>
       
       <div class="div-card d-flex align-items-center  flex-column  ">
-
-          <h3 class="bold text-bg-warning text-center">Credit Cards</h3>
+        <div>
+          <h3 class="bold text-bg-warning text-center border border-white p-2 mb-2  rounded ">Credit Cards</h3>
           <div class="credit-card " v-if="creditCards.length != 0" v-for="card of creditCards"
             v-bind:class="changeCardColor(card)">
             <div class="card-front">
@@ -56,9 +57,11 @@
               <p class="card-cvv text-bg-dark">CVV {{card.cvv}}</p>
             </div>
           </div>
+
+        </div>
         </div>
         <div class="div-card1 ">
-          <h3 class="bold text-bg-warning text-center">Debit Cards</h3>
+          <h3 class="bold text-bg-warning text-center  border border-white p-2 mb-2  rounded ">Debit Cards</h3>
           <div class="debit-card " v-if="debitCards.length != 0" v-for="card of debitCards"
             v-bind:class="changeCardColor(card)">
             <div class="card-front">

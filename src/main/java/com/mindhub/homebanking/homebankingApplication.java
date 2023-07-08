@@ -12,13 +12,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 
 
 @SpringBootApplication
 public class homebankingApplication {
 	public static void main(String[] args) {
+
 		SpringApplication.run(homebankingApplication.class, args);
 	}
+	LocalDateTime day = LocalDateTime.now();
+	List<Integer> mortgage = List.of(12, 24, 36, 48, 60);
+	List<Integer> personal = List.of(6, 12, 24);
+	List<Integer> automotive = List.of(6, 12, 24, 36);
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 

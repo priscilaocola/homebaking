@@ -6,7 +6,7 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link rel="stylesheet" href="../Style/accounts.css">
+  <link rel="stylesheet" href="../style/accounts.css">
   <link rel="shortcut icon" href="../asset/favicon.png" type="image/x-icon">
   <title>Accounts | Elfer Bank</title>
 </head>
@@ -22,6 +22,7 @@
         <a href="#">ACCOUNTS & LOANS</a>
         <a href="./cards.html">CARDS</a>
         <a href="./transfers.html">TRANSFERS</a>
+        
         </nav>
         <button @click="logout()" class="btn btn-danger fw-bold  border-black m-5">LOGOUT</button>
     </div>
@@ -32,36 +33,47 @@
   <div class="d-flex justify-content-center">
     <div id="titleContainer" class="m-3 d-flex justify-content-around">
      <h1 id="mainTitle" class=" text-white rounded mt-3 border border-white p-2 mb-3 text-bg-dark ">WELCOME {{client.firstName}} {{client.lastName}} !</h1>
-     <template v-if="accounts.length !== 3">
-      <button @click="createAccount()" class="shadow__btn fs-6 fw-bold text-light">CREATE ACCOUNTS</button>
-     </template> 
     </div>
   </div>
-    <div class="d-flex flex-wrap justify-content-center flex-column align-content-center">
-      <h2 class="text-center fs-3 text-bg-dark border border-white p-1 mb-3  rounded ">My Accounts</h2>
-      <div id="accountMainContainer" class="d-flex m-3 gap-2">
-      <div class="accountContainer text-white  text-center p-2 gap-1 m-2 mt-5 " v-for="account of accounts">
-        <h3 class="h3 text-center border-light">Account Balance</h3>
-        <h5>Number</h5>
-        <p class="fs-3 text-bg-dark">{{account.number}}</p>
-        <h5>Balance</h5>
-        <p> {{account.balance}}</p>
-        <h5>Creation Date</h5>
-        <p>{{account.creationDate}}</p>
-        <a class="btn btn-warning fw-bold fs-5  border-light" v-bind:href="`./account.html?id=${account.id}`">Transactions</a>
+    <div class="d-flex flex-wrap flex-column align-content-center">
+      <div>
+        <div id="titleContainer1" class="m-3 d-flex justify-content-around">
+          <h2 class="text-center fs-2 rounded mt-3 border border-warning p-2 mb-3 text-bg-dark p-1">MY ACCOUNTS</h2>
+          <template v-if="accounts.length !== 3">
+           <button @click="createAccount()" class="shadow__btn fs-6 fw-bold text-light">CREATE ACCOUNTS</button>
+          </template> 
+         </div>
+        
+        <div id="accountMainContainer" class="d-flex gap-2">
+          <div class="accountContainer text-white  text-center p-2 gap-1 m-2 mt-5 " v-for="account of accounts">
+            <h5>Number</h5>
+            <p class="fs-3 text-bg-dark">{{account.number}}</p>
+            <h5>Balance</h5>
+            <p> {{account.balance}}</p>
+            <h5>Creation Date</h5>
+            <p>{{account.creationDate}}</p>
+            <a class="btn btn-warning fw-bold fs-5  border-light" v-bind:href="`./account.html?id=${account.id}`">Transactions</a>
+          </div>
       </div>
-    </div>
-    <h2 class="text-center fs-3 text-bg-dark border border-white p-1 mb-3  rounded ">My Loans</h2>
-      <div id="loanContainer" class="d-flex align-content-center  m-3">
-        <div v-if="loans.length != 0" v-for="loan of loans" class="accountContaines text-white text-center p-2 gap-1  mt-5 ">
-          <h3 class="h3 text-center">Loan </h3>
-          <p class="fs-4 text-bg-dark">{{loan.name}}</p>
-          <h5>Amount</h5>
-          <p>{{loan.amount.toLocaleString()}}</p>
-          <h5>Payments</h5>
-          <p>{{loan.payments}}</p>
+       </div>
+    <div class="flex-column">
+      <div>
+        <div id="titleContainer1" class="m-3 d-flex justify-content-around mt-3">
+          <h2 class="text-center fs-2 rounded mt-3 border border-warning p-2 mb-3 text-bg-dark p-1">MY LOANS</h2>
+          <a class="shadow__btn fs-6 fw-bold border-black text-light" href="./loan-application.html ">APPLY</a>
         </div>
-      </div>
+          <div id="loanContainer" class="d-flex   m-3"> 
+            <div v-if="loans.length != 0" v-for="loan of loans" class="accountContaines text-white text-center p-2 gap-1  mt-5 ">
+              <p class="fs-4 text-bg-dark">{{loan.name}}</p>
+              <h5>Amount</h5>
+              <p>{{loan.amount.toLocaleString()}}</p>
+              <h5>Payments</h5>
+              <p>{{loan.payments}}</p>
+            </div>
+          </div>
+      </div> 
+    </div>
+   
     </div>
     
   </main>

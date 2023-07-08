@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .logo {
+    width: 12rem;
+    height: 11rem;
+  }
+  
+  header {
+    min-height: 12vh;
+    background: linear-gradient(0deg,  rgb(0, 0, 0) 0%,  rgb(245, 194, 8) 100%);
+  }
+  /* #navbar {
+    background: rgb(233, 240, 27);
+    background: linear-gradient(0deg, rgba(247, 198, 3, 0.864) 0%,  rgb(247, 220, 18) 100%);
+    padding: 1.3rem;
+    border-radius: 1rem;
+    box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  } */
+  main {
+    min-height: 78vh;
+    background-image: url(../asset/loan1\ \(3\).jpg);
+    background-size: cover;
+  
+    
+  }
+  footer {
+    min-height: 12vh;
+    background: linear-gradient(0deg,  rgb(245, 194, 8) 100%, rgb(185, 109, 3) 0%);
+    box-shadow: rgba(3, 3, 3, 0.4) 0px 0px 0px 2px, rgba(0, 0, 0, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  }
+  #navbar a {
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 1000;
+    color: white;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: rgb(36, 36, 36);
+    border: 2px solid yellow;
+  }
+  
+  #navbar a:hover {
+    color:yellow;
+    transform: scale(1.2);
+    transition: color 0.5s ease;
+  }
+  .logito {
+    width: 4rem;
+}
+
+select{
+    width: 10rem;
+    height: 2rem;
+
+}
+section{
+    display: flex;
+    justify-content: center;
+    width: 85rem;
+    height: 15rem;
+
+}
+section img{
+    width: 0px;
+    flex-grow: 2;
+    object-fit: cover;
+    opacity: .8;
+    transition: .5 ease;
+   
+  
+}
+section img:hover{
+   cursor: crosshair; 
+   width: 100px;
+   opacity: 1;
+   border: solid 5px yellow;
+   border-radius: 15px ;
+}
+/* ******************* */
+.div-loans {
+	background-color: #161a1e;
+	max-width: fit-content;
+	padding: 25px;
+	border: 3px solid yellow;
+	border-radius: 30px;
+}
+.div-amount {
+	width: 19em;
+}
+
+.text-p-loans {
+	color: rgb(253, 212, 10);
+}
+.text-loans {
+	color: rgb(243, 238, 238) !important;
+	text-shadow: 3px 1px 0px rgb(9, 9, 9);
+}
+.div-form-loans {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+	width: 45rem;
+  border: solid 3px yellow;
+    background-color: black;
+    border-radius: 30px;
+    padding: 1rem;
+}

@@ -1,13 +1,12 @@
 package com.mindhub.homebanking.controllers;
 
 import com.mindhub.homebanking.dtos.CardDTO;
-import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.models.CardColor;
 import com.mindhub.homebanking.models.CardType;
 import com.mindhub.homebanking.models.Client;
-import com.mindhub.homebanking.repositories.CardRepository;
-import com.mindhub.homebanking.repositories.ClientRepository;
+import com.mindhub.homebanking.services.CardService;
+import com.mindhub.homebanking.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,15 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
 public class CardController {
     @Autowired
-    private CardRepository cardRepository;
+    private CardService cardService;
     @Autowired
-    private ClientRepository clientRepository;
+    private ClientService clientService;
 
     private String randomNumberCards(){
         String randomCards = "";
@@ -44,7 +42,7 @@ public class CardController {
     }
     @RequestMapping("/clients/current/cards")
     public List<CardDTO> getAccounts (Authentication authentication){
-        return new ClientDTO(clientRepository.findByEmail(authentication.getName())).getCards().stream().collect(Collectors.toList());
+        return cardService.getCard(authentication);
     }
 
     @RequestMapping(path = "/clients/current/cards", method = RequestMethod.POST)
@@ -58,15 +56,15 @@ public class CardController {
         String cardsNumber;
         do {
             cardsNumber = randomNumberCards();
-        }while(cardRepository.findByNumber(cardsNumber) != null);
+        }while(cardService.findByNumber(cardsNumber) != null);
 
         int cardsCvv;
 
         do {
             cardsCvv = randomCvv();
-        }while (cardRepository.findByCvv(cardsCvv) != null);
+        }while (cardService.findByCvv(cardsCvv) != null);
 
-        Client client = clientRepository.findByEmail(authentication.getName());
+        Client client = clientService.findByEmail(authentication.getName());
 
         for (Card card :client.getCards()) {
             if (card.getType().equals(type) && card.getColor().equals((color))) {
@@ -75,8 +73,8 @@ public class CardController {
         }
 
         Card newCard = new Card(type,color,randomNumberCards(),LocalDate.now(),LocalDate.now().plusYears(5),randomCvv(),client.getFirstName() + " " + client.getLastName());
-        clientRepository.findByEmail(authentication.getName()).addCard(newCard);
-        cardRepository.save(newCard);
+        clientService.findByEmail(authentication.getName()).addCard(newCard);
+         cardService.saveCard(newCard);
 
 
         return  new ResponseEntity<>( HttpStatus.CREATED);

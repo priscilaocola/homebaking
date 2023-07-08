@@ -56,13 +56,24 @@ footer {
 #titleContainer {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
-  background: rgb(215, 184, 25);
-  width: 50rem;
+  background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgb(255, 207, 14) 100%);
+  width: 45rem;
   height: 8rem;
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
+#titleContainer1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  background: linear-gradient(0deg, rgba(28, 28, 28, 0.874) 0%, rgb(255, 242, 2) 100%);
+  width: 40rem;
+  height: 8rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
 
 video {
   position: absolute;
@@ -84,30 +95,22 @@ video {
 
 
 #accountMainContainer {
-  width: 50rem;
-  height: 35rem;
+  min-width: 30rem;
+  height: 25rem;
   padding-left: 1rem;
   border-radius: 1rem;
  background-image: url(../asset/transactions5.jpeg); 
   background-size: cover;
   border: 3px solid rgb(247, 255, 1);
 }
-.h3{
-  background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(248, 245, 56, 0.695) 100%);
-  color: black;
-  padding: 0.4rem;
-  border-radius: 2rem;
-  border: 2px solid white;
-}
 
 .accountContainer {
-  width: 16rem;
-height: 25rem;
+  width: 13rem;
+height: 19rem;
 border: 2px solid yellow;
   background: linear-gradient(0deg, rgb(8, 8, 8) 0%, rgba(0, 0, 0, 0.695) 100%);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1000;
-  margin: 1rem;
   border-radius: 2rem;
 }
 
@@ -125,7 +128,7 @@ border: 2px solid yellow;
 /* loans */
 .accountContaines {
   width: 12rem;
-  height: 16rem;
+  height: 14rem;
   background: linear-gradient(0deg, rgb(8, 8, 8) 0%, rgba(0, 0, 0, 0.695) 100%);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1000;
@@ -134,8 +137,8 @@ border: 2px solid yellow;
   border: 1px solid yellow;
 }
 #loanContainer {
-  width: 30rem;
-  height: 22rem;
+ min-width: 45rem;
+  height: 18rem;
   border-radius: 1rem;
   border: 2px solid rgb(247, 255, 1);
  background-image: url(../asset/transactions5.jpeg); 
@@ -145,6 +148,7 @@ border: 2px solid yellow;
   height: 4rem;
   padding: 1rem;
   margin-top: 1rem;
+  text-decoration: none;
 border-radius: 1rem;
   background: linear-gradient(0deg,  rgb(164, 163, 158) 90%, rgb(243, 163, 5) 10%);
 }

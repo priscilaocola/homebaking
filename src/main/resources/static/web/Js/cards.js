@@ -14,7 +14,7 @@ createApp({
     },
     methods: {
         loadData() {
-            axios.get(`http://localhost:8080/api/clients/current`)
+            axios.get(`/api/clients/current`)
                 .then(res => {
                     this.client = res.data
                     this.cards = this.client.cards.sort((a,b) => a.id - b.id)
@@ -32,24 +32,22 @@ createApp({
             }
         },
         logout() {
-			Swal.fire({
-				title: 'Are you sure that you want to log out',
-				inputAttributes: {
-					autocapitalize: 'off',
-				},
-				showCancelButton: true,
-				confirmButtonText: 'Sure',
-				showLoaderOnConfirm: true,
-				preConfirm: login => {
-					return axios.post('/api/logout')
+            Swal.fire({
+				title: 'Bye see you soon',
+				imageUrl: '../asset/BYE BYE.png',
+				imageWidth: 400,
+				imageHeight: 250,
+				imageAlt: 'Custom image',
+			  preConfirm: login => {
+					return axios
+						.post('/api/logout')
 						.then(response => {
 							window.location.href = '/web/pages/index.html';
 						})
 						.catch(error => {
-							console.log(error);
+							Swal.showValidationMessage(`Request failed: ${error}`);
 						});
 				},
-     
         }) 
     }
     }

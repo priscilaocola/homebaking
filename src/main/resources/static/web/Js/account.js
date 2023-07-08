@@ -15,7 +15,7 @@ createApp({
     loadData() {
       
       this.getId = new URLSearchParams(location.search).get("id"); 
-      axios.get(`http://localhost:8080/api/accounts/${this.getId}`)
+      axios.get(`/api/accounts/${this.getId}`)
         .then((res) => {
           const accounts = res.data;
           this.allAccounts = accounts.transactions
@@ -23,14 +23,28 @@ createApp({
           
           this.allAccounts.sort((a, b) => b.id - a.id);
 
-        }) .catch((err) => console.log(err));
+        }) .catch((error) => console.log(error));
     },
-    logout(){
-      axios.post("/api/logout")
-      .then((res) => {
-          window.location.href="/web/pages/index.html"
-      }).catch(err => console.log(err))
-  }
-
-  },
+    logout() {
+      Swal.fire({
+  title: 'Bye see you soon',
+  imageUrl: '../asset/BYE BYE.png',
+  imageWidth: 400,
+  imageHeight: 250,
+  imageAlt: 'Custom image',
+  preConfirm: login => {
+    return axios
+      .post('/api/logout')
+      .then(response => {
+        window.location.href = '/web/pages/index.html';
+      })
+      .catch(error => {
+        Swal.showValidationMessage(`Request failed: ${error}`);
+      })
+      
+    },
+  })
+    }
+    },
+  
 }).mount("#app");

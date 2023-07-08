@@ -4,9 +4,9 @@ import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.models.Transaction;
 import com.mindhub.homebanking.models.TransactionType;
-import com.mindhub.homebanking.repositories.AccountRepository;
-import com.mindhub.homebanking.repositories.ClientRepository;
-import com.mindhub.homebanking.repositories.TransactionRepository;
+import com.mindhub.homebanking.services.AccountService;
+import com.mindhub.homebanking.services.ClientService;
+import com.mindhub.homebanking.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,14 +25,20 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 public class TransactionController {
 
+//    @Autowired
+//    private ClientRepository clientRepository;
+//
+//    @Autowired
+//    private AccountRepository accountRepository;
+//
+//    @Autowired
+//    private TransactionRepository transactionRepository;
+@Autowired
+private ClientService clientService;
     @Autowired
-    private ClientRepository clientRepository;
-
+    private AccountService accountService;
     @Autowired
-    private AccountRepository accountRepository;
-
-    @Autowired
-    private TransactionRepository transactionRepository;
+    private TransactionService transactionService;
 
     @Transactional
     @RequestMapping(path = "/transactions", method = RequestMethod.POST)
@@ -41,9 +47,9 @@ public class TransactionController {
             , @RequestParam double amount, @RequestParam String description
             , @RequestParam String accountO, @RequestParam String accountD ){
 
-        Client client = clientRepository.findByEmail(authentication.getName());
-        Account selectAccountO = accountRepository.findByNumber(accountO.toUpperCase());
-        Account selectAccountD= accountRepository.findByNumber(accountD.toUpperCase());
+        Client client = clientService.findByEmail(authentication.getName());
+        Account selectAccountO = accountService.findByNumber(accountO.toUpperCase());
+        Account selectAccountD= accountService.findByNumber(accountD.toUpperCase());
         Set<Account> accountExist = client.getAccounts().stream().filter(account -> account.getNumber().equals(accountO)).collect(Collectors.toSet());
 
 
@@ -79,8 +85,8 @@ public class TransactionController {
         selectAccountO.setBalance(selectAccountO.getBalance() - amount);
         selectAccountD.setBalance(selectAccountD.getBalance() + amount);
 
-        transactionRepository.save(transactionOrigin);
-        transactionRepository.save(transactionDestin);
+        transactionService.saveTransaction(transactionOrigin);
+        transactionService.saveTransaction(transactionDestin);
 
 
 

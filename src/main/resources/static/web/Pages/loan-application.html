@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<link rel="stylesheet" href="../style/loan-application.css">
+<link rel="shortcut icon" href="../asset/favicon.png" type="image/x-icon">
+    <title>Loan | Elfer Bank</title>
+</head>
+<body>
+    <div id="app">
+        <header class="d-flex justify-content-around flex-wrap">
+            <div class="navbar">
+              <img class="logo" src="../asset/logo.png">
+              <nav id="navbar" class="d-flex gap-4 justify-content-around flex-wrap">
+                <a href="./accounts.html">ACOUNTS & LOANS</a>
+                <a href="./cards.html"> CARDS </a>
+                <a href="./transfers.html">TRANSFERS</a>
+                
+              </nav>
+              <button @click="logout()" class="btn btn-danger fw-bold  border-black m-5">LOGOUT</button>
+            </div>
+        </header>
+            <main>
+              <h1 class="text-warning text-bg-dark text-center fw-bold">- Request you Loan -</h1>
+                <div class=" d-flex justify-content-center mt-5">
+                  <section >
+                    <img src="../asset/loan1 (1).jpg" alt="">
+                    <img src="../asset/loan1 (2).jpg" alt="">
+                    <img src="../asset/loan1 (3).jpg" alt="">
+                    <img src="../asset/loan1 (4).jpg" alt="">
+                </div>
+            </section>
+            <div class="pt-3 pb-3 d-flex justify-content-around align-items-center  flex-column">
+                <form class="div-loans">
+                    <h4 class="text-light text-center">Types of loans</h4>
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <select @Change="filterPayments" class="form-select  mb-3" aria-label=".form-select-lg example" v-model="loanType">
+                            <option selected value="" class="text-center fs-6">LOANS</option>
+                            <template v-for="loan of loans">
+                                <option :value="loan.name">{{loan.name}}</option>
+                            </template>
+                        </select>
+                        <h4 class="text-light">Choose in how many installments</h4>
+                        <div>
+                            <select class="form-select mb-3" aria-label=".form-select-lg example" v-model="payments">
+                                <option selected value="" class="text-center  fs-6">PAYMENTS</option>
+                                <template v-for="payment of paymentsFilter.payments">
+                                    <option :value="payment">{{payment}}</option>
+                                </template>
+                            </select>
+                        </div>
+                        <h4 class="text-light">Amount to ask</h4>
+                        <div class="input-group input-group-lg div-amount">
+                            <span class="input-group-text" id="inputGroup-sizing-lg"><ion-icon name="cash-outline"></ion-icon></span>
+                            <input @input="interests" type="number" class="form-control" aria-label="Sizing example input"aria-describedby="inputGroup-sizing-lg"  v-model="amount"
+                            />
+                        </div>
+                        <h4 class="text-light pt-3">Choose which account you want your loan to</h4>
+                        <select class="form-select  mb-3" aria-label=".form-select-lg example" v-model="account">
+                            <option selected value="" class="text-center  fs-6">ACCOUNTS</option>
+                            <template v-for="account of accounts">
+                                <option :value="account.number">{{account.number}}</option>
+                            </template>
+                        </select>
+                    </div>
+                    <p class="text-p-loans">Remember that you will have to repay 20% more than the requested loan</p>
+                    <h4 class="text-light text-center mb-2">MAX AMOUNT : U$D <span class="text-light">{{paymentsFilter.maxAmount}}</span></h4>
+                    <button type="button" class="btn btn-warning fw-bold fs-5 border-light mt-2 d-flex m-auto"  @click="loanCreate">REQUEST</button>
+                </form>
+                <div class="div-form-loans">
+                    <table class="table container">
+                        <thead >
+                            <tr>
+                                <td class="text-trans text-bg-dark text-center">LOAN</td>
+                                <td class="text-trans text-bg-dark text-center">PAYMENTS</td>
+                                <td class="text-trans text-bg-dark text-center">AMOUNT TO RETURN</td>
+                                <td class="text-trans text-bg-dark text-center">INSTALLMENT VALUE TO PAY</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-bg-warning text-center">{{paymentsFilter.name}}</td>
+                                <td class="text-bg-warning text-center">{{payments}}</td>
+                                <td class="text-bg-warning text-center">U$D {{(amount * 1.2).toLocaleString('en-US')}}</td>
+                                <td class="text-bg-warning text-center">U$D {{cuotas.toLocaleString('en-US')}}</td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+    
+            </div>
+           
+            </main>
+
+                <footer class="d-flex justify-content-around ">
+                    <div class=" text-center ">
+                        <h3 class="text-center  fw-bold">Location</h3>
+                        <p class="fw-bold">Carson, California 90810·EE. UU.</p>
+                    </div>
+        
+                    <div class=" text-center">
+                        <h3 class="text-center  fw-bold">Elfer Bank</h3>
+                        <a href="#"><img class="logito" src="../asset/favicon.png" alt=""></a>
+                    </div>
+        
+                    <div class=" m-3">
+                        <h4 class=" text-dark fw-bold ">©DevPriscilaOcola</h4>
+                    </div>
+
+              
+                </footer>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+            <script src="https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js"></script>
+            <script src="../js/loan-application.js"></script>
+</body>
+</html>

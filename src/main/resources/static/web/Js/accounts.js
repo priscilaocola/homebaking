@@ -6,7 +6,7 @@ createApp({
             accounts: [],
             client: [],
             loans: [],
-           
+        
 
         }
     },
@@ -15,7 +15,7 @@ createApp({
     },
     methods: {
         loadData() {
-            axios.get("http://localhost:8080/api/clients/current")
+            axios.get("/api/clients/current")
                 .then(res => {
                     this.client = res.data;
                     console.log(this.client)
@@ -32,14 +32,12 @@ createApp({
         },
         logout() {
             Swal.fire({
-				title: 'Are you sure that you want to log out',
-				inputAttributes: {
-					autocapitalize: 'off',
-				},
-				showCancelButton: true,
-				confirmButtonText: 'Sure',
-				showLoaderOnConfirm: true,
-				preConfirm: login => {
+				title: 'Bye see you soon',
+				imageUrl: '../asset/BYE BYE.png',
+				imageWidth: 400,
+				imageHeight: 250,
+				imageAlt: 'Custom image',
+			  preConfirm: login => {
 					return axios
 						.post('/api/logout')
 						.then(response => {
@@ -77,6 +75,7 @@ createApp({
 				
 			});
 		},
+		
 	},
 }).mount("#app");
 

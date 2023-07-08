@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-<link rel="stylesheet" href="../Style/login.css">
+<link rel="stylesheet" href="../style/login.css">
 <link rel="shortcut icon" href="../asset/favicon.png" type="image/x-icon">
     <title>Login | Elfer Bank</title>
 </head>
@@ -57,7 +57,7 @@
                             <input id="mail" type="email" class="input" v-model="registerEmail">
                         </div>
                         <div class="group">
-                            <input type="submit" class="button" @click.prevent="register()" value="Sign Up">
+                            <input type="button" class="button" @click.prevent="register()" value="Sign Up">
                         </div>
                         <div class="hr"></div>
                     </div>
@@ -84,6 +84,7 @@
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js"></script>
     <script src="../js/login.js"></script>
 </body>
 </html>

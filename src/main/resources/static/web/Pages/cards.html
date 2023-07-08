@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
-  <link rel="stylesheet" href="../Style/cards.css">
+  <link rel="stylesheet" href="../style/cards.css">
   <link rel="shortcut icon" href="../asset/favicon.png" type="image/x-icon">
   <title>Cards | Elfer Bank</title>
 </head>
@@ -21,6 +21,7 @@
           <a href="./accounts.html">ACOUNTS & LOANS</a>
           <a href="#">CARDS </a>
           <a href="./transfers.html">TRANSFERS</a>
+        
         </nav>
         <button @click="logout()" class="btn btn-danger fw-bold  border-black m-5">LOGOUT</button>
       </div>
@@ -36,9 +37,10 @@
           <a href="./create-cards.html" class="botonadd mt-4 btn-cards">CREATE CARDS</a>
       </button>
       </template>
+    </div>
       
-      <div class="div-card d-flex align-items-center  flex-column  ">
-        <div>
+       <div class="d-flex justify-content-center  ">
+        <div class="div-card ">
           <h3 class="bold text-bg-warning text-center border border-white p-2 mb-2  rounded ">Credit Cards</h3>
           <div class="credit-card " v-if="creditCards.length != 0" v-for="card of creditCards"
             v-bind:class="changeCardColor(card)">
@@ -46,7 +48,7 @@
               <p class="card-type text-light">Credit</p>
               <p class="card-number text-light">{{card.number}}</p>
               <div class="card-info d-flex align-items-center  ">
-                <p class="card-holder text-light">{{card.cardHolder.toUpperCase()}}</p>
+                <p class="card-holder  fs-5 fw-bold text-light">{{card.cardHolder.toUpperCase()}}</p>
                 <p class="card-expiry mx-2 fw-bold text-light">exp: {{card.thruDate.slice(5,7)}} / {{card.thruDate.slice(2,4)}}</p>
               </div>
             </div>
@@ -57,10 +59,10 @@
               <p class="card-cvv text-bg-dark">CVV {{card.cvv}}</p>
             </div>
           </div>
-
-        </div>
-        </div>
-        <div class="div-card1 ">
+         </div>
+        
+         <div class="div-card1 ">
+       
           <h3 class="bold text-bg-warning text-center  border border-white p-2 mb-2  rounded ">Debit Cards</h3>
           <div class="debit-card " v-if="debitCards.length != 0" v-for="card of debitCards"
             v-bind:class="changeCardColor(card)">
@@ -68,8 +70,8 @@
               <p class="card-type text-light">Debit</p>
               <p class="card-number1 text-light">{{card.number}}</p>
               <div class="card-inf d-flex align-items-center justify-content-center">
-                <p class="card-holder1 text-light">{{card.cardHolder.toUpperCase()}}</p>
-                <p class="card-expirys  mx-3 fw-bold text-light">exp: {{card.thruDate.slice(5,7)}} / {{card.thruDate.slice(2,4)}}</p>
+                <p class="card-holder1 text-light fs-5 fw-bold">{{card.cardHolder.toUpperCase()}}</p>
+                <p class="card-expirys  mx-2 fw-bold text-light">exp: {{card.thruDate.slice(5,7)}} / {{card.thruDate.slice(2,4)}}</p>
               </div>
             </div>
             <div>
@@ -78,10 +80,8 @@
             <div class="card-back">
               <p class="card-cvv text-bg-dark">CVV {{card.cvv}}</p>
             </div>
+        </div>
           </div>
-        </div>
-        </div>
-
       </div>
     </main>
     <footer class="d-flex justify-content-around flex-wrap ">

@@ -2,8 +2,8 @@ package com.mindhub.homebanking.controllers;
 
 import com.mindhub.homebanking.dtos.AccountDTO;
 import com.mindhub.homebanking.models.Account;
-import com.mindhub.homebanking.repositories.AccountRepository;
-import com.mindhub.homebanking.repositories.ClientRepository;
+import com.mindhub.homebanking.services.AccountService;
+import com.mindhub.homebanking.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,18 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 
 @RequestMapping("/api")
 @RestController
 public class AccountController {
-    @Autowired
-    private AccountRepository accountRepository;
 
     @Autowired
-    private ClientRepository clientRepository;
+    private ClientService clientService;
+    @Autowired
+    private AccountService accountService;
 
     private String randomNumber(){
         String randomNumber;
@@ -34,28 +33,26 @@ public class AccountController {
         do {
             int number = (int) (Math.random() * 899999 + 100000);
             randomNumber = "VIN-" + number;
-        } while (accountRepository.findByNumber(randomNumber) != null);
+        } while (accountService.findByNumber(randomNumber) != null);
         return randomNumber;
     }
     @RequestMapping ("/accounts")
     public List<AccountDTO> getAllAccounts(){
-        return accountRepository.findAll()
-                .stream()
-                .map(account -> new AccountDTO(account))
-                .collect(Collectors.toList());
+        return accountService.getAccounts();
+
     }
     @RequestMapping("/accounts/{id}")
     public AccountDTO getOneAccount(@PathVariable Long id){
-        return accountRepository.findById(id).map(account -> new AccountDTO(account)).orElse(null);
+        return accountService.getAccountID(id);
     }
     @RequestMapping(path = "/clients/current/accounts", method = RequestMethod.POST)
 
     public ResponseEntity<Object> newAccount(Authentication authentication){
-        if (clientRepository.findByEmail(authentication.getName()).getAccounts().size() <= 2){
+        if (clientService.findByEmail(authentication.getName()).getAccounts().size() <= 2){
             String accountNumber = randomNumber();
             Account newAccount = new Account(accountNumber, LocalDate.now(), 0.0);
-            clientRepository.findByEmail(authentication.getName()).addAccount(newAccount);
-            accountRepository.save(newAccount);
+         clientService.findByEmail(authentication.getName()).addAccount(newAccount);
+         accountService.saveAccount(newAccount);
         }else{
             return  new ResponseEntity<>("You reached the limit of accounts", HttpStatus.FORBIDDEN);
         }

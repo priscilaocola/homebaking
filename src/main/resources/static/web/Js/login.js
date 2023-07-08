@@ -17,16 +17,24 @@ createApp({
             if(this.email && this.password ){
                 axios.post("/api/login", `email=${this.email}&password=${this.password}`, { headers: { "content-type": "application/x-www-form-urlencoded" } })
                 .then((res) => {
-                    console.log("login")
-                    window.location.href = "/web/pages/accounts.html"
-                }).catch(error =>
-					Swal.fire({
-						icon: 'error',
-						title: 'Oh!',
-						text: 'Your email or your password are incorrect'
-					})
-				);
-            }
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Welcome!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setTimeout(() => {
+                            window.location.href = "/web/pages/accounts.html";
+                        }, 1800)
+                  
+                }).catch((error) => 
+                Swal.fire({
+                icon: 'error',
+                text: 'Something went wrong!',
+            }));
+        }
+
         },
 
         register() {
@@ -35,16 +43,23 @@ createApp({
                     { headers: { "content-type": "application/x-www-form-urlencoded" } })
 
                         axios.post("/api/login", `email=${this.registerEmail}&password=${this.registerPassword}`, { headers: { "content-type": "application/x-www-form-urlencoded" } })
-                        .then((response) => {
-                            console.log("login")
-                            window.location.href = "/web/pages/accounts.html"
-                    }).catch(error =>
-                        Swal.fire({
-                            icon: 'error',
-                            text: error.response.data,
-                            confirmButtonColor: '#F2070793',
-                        })
-                    );
+                        .then((res) => {
+                            if (res.status == 200) {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Welcome!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                                setTimeout(() => {
+                                    window.location.href = "/web/pages/accounts.html";
+                                }, 1800)
+                            }
+                    }).catch((error) => Swal.fire({
+                        icon: 'error',
+                        text: 'Something went wrong!',
+                    }));
             }
         }
         

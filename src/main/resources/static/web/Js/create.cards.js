@@ -16,12 +16,12 @@ createApp({
             axios.post('/api/clients/current/cards', `type=${this.type}&color=${this.color}`)
                 .then(response => {
                     Swal.fire({
-                        icon: 'success',
+                        position: 'center',
                         text: 'The card was created successfully',
-                        onClose: () => {
-                            window.location.href = '/web/pages/cards.html';
-                        }
+                        showConfirmButton: false,
+                       time:3000
                     });
+                    window.location.href = '/web/pages/cards.html';
                 }
                 ).catch((error) => Swal.fire({
                     icon: 'error',
@@ -41,6 +41,7 @@ createApp({
                         this.createCards();
                     }
                 })
+               
     
     
             }

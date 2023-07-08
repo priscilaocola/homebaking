@@ -50,7 +50,7 @@ footer {
 
 .div-cards-create {
     background: linear-gradient(0deg,  rgb(6, 6, 6) 100%, rgb(239, 231, 231) 2%);
-    width: 20rem;
+    width: 25rem;
     height: 20rem;
     margin: 3rem;
     margin-top: 5rem;
@@ -67,7 +67,7 @@ section{
     display: flex;
     justify-content: center;
     width: 85rem;
-    height: 20rem;
+    height: 15rem;
 
 }
 section img{
@@ -79,6 +79,8 @@ section img{
 }
 section img:hover{
    cursor: crosshair; 
-   width: 220px;
+   width: 100px;
    opacity: 1;
+   border: solid 5px yellow;
+   border-radius: 15px ;
 }

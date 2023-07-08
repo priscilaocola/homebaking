@@ -4,7 +4,8 @@ import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.AccountRepository;
-import com.mindhub.homebanking.repositories.ClientRepository;
+import com.mindhub.homebanking.services.AccountService;
+import com.mindhub.homebanking.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,13 +15,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
 public class ClientController {
     @Autowired
-    private ClientRepository clientRepository;
+    private ClientService clientService;
+    @Autowired
+    private AccountService accountService;
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
@@ -38,17 +40,16 @@ public class ClientController {
 
     @RequestMapping("/clients")
     public List<ClientDTO> getClients() {
-        return clientRepository.findAll().stream().map(client -> new ClientDTO(client)).collect(Collectors.toList());
+        return clientService.findAll();
     }
     @RequestMapping("/clients/{id}")
-    public ClientDTO getOneClient(@PathVariable Long id) {
-        return new ClientDTO(clientRepository.findById(id).orElse(null));
+   public ClientDTO getOneClient(@PathVariable Long id){
+      return clientService.getClientDTO(id);
     }
     @RequestMapping  ("/clients/current")
     public ClientDTO getClient(Authentication authentication) {
-        return new ClientDTO(clientRepository.findByEmail(authentication.getName()));
+        return new ClientDTO (clientService.findByEmail(authentication.getName()));
     }
-
     @RequestMapping(path = "/clients", method = RequestMethod.POST)
 
     public ResponseEntity<Object> register(
@@ -60,26 +61,26 @@ public class ClientController {
         if (firstName.isBlank()) {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
         }
-        if (lastName.isBlank()) {
+        else if (lastName.isBlank()) {
             return new ResponseEntity<>("Your last name is missing.", HttpStatus.FORBIDDEN);
         }
-        if (email.isBlank()) {
+         else if (email.isBlank()) {
             return new ResponseEntity<>("Your email is missing.", HttpStatus.FORBIDDEN);
         }
-        if (password.isBlank()) {
+       else  if (password.isBlank()) {
                 return new ResponseEntity<> ("Your password is missing", HttpStatus.FORBIDDEN);
             }
-        if(clientRepository.findByEmail(email) !=null) {
+       else  if(clientService.findByEmail(email) !=null) {
             return new ResponseEntity<>("Email already in use",HttpStatus.FORBIDDEN);
         }
 
         Client newClient = new Client(firstName, lastName, email, passwordEncoder.encode(password));
-        clientRepository.save(newClient);
+       clientService.saveClient(newClient);
         String accountNumber = randomNumber();
         Account newAccount = new Account(accountNumber, LocalDate.now(), 0.0);
         newClient.addAccount(newAccount);
-        accountRepository.save(newAccount);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+     accountService.saveAccount(newAccount);
+        return new ResponseEntity<>( "registration completed successfully!",HttpStatus.CREATED);
 
         }
 

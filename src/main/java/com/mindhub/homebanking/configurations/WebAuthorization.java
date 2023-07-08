@@ -27,17 +27,31 @@ class WebAuthorization {
                 .antMatchers(HttpMethod.POST,"/api/login").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/logout").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/clients").permitAll()
+                .antMatchers("/web/pages/**").permitAll()
+                .antMatchers("/web/asset/**").permitAll()
+                .antMatchers("/web/style/**").permitAll()
+                .antMatchers("/web/js/**").permitAll()
                 .antMatchers("/web/pages/index.html").permitAll()
                 .antMatchers("/web/pages/manager.html").hasAuthority("ADMIN")
                 .antMatchers("/rest/**").hasAuthority("ADMIN")
                 .antMatchers("/h2-console").hasAuthority("ADMIN")
+                .antMatchers("/api/clients/current/**").hasAuthority("CLIENT")
+                .antMatchers("/api/accounts/{id}").hasAuthority("CLIENT")
+                .antMatchers("/api/accounts").hasAuthority("CLIENT")
+                .antMatchers("/api/loans").hasAnyAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST,"/api/clients/current/cards").hasAnyAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST,"/api/clients/current/accounts").hasAnyAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST, "/api/clients/current/transaction").hasAnyAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST, "/api/transactions").hasAuthority( "CLIENT")
+                .antMatchers(HttpMethod.POST,"/api/loans").hasAnyAuthority("CLIENT")
                 .antMatchers("/web/pages/accounts.html").hasAuthority("CLIENT")
                 .antMatchers("/web/pages/account.html").hasAuthority("CLIENT")
                 .antMatchers("/web/pages/cards.html").hasAuthority("CLIENT")
-                .antMatchers(HttpMethod.POST,"/api/clients/current/cards").hasAnyAuthority("CLIENT", "ADMIN")
-                .antMatchers(HttpMethod.POST,"/api/clients/current/accounts").hasAnyAuthority("CLIENT", "ADMIN")
-                .antMatchers(HttpMethod.POST, "/api/clients/current/transaction").hasAnyAuthority("CLIENT", "ADMIN");
-//                .anyRequest().denyAll();
+                .antMatchers("/web/pages/transfers.html").hasAuthority("CLIENT")
+                .antMatchers("/web/pages/create-cards.html").hasAuthority("CLIENT")
+                .antMatchers("/web/pages/loan-application.html").hasAuthority("CLIENT")
+                .antMatchers("/web/pages/login.html").hasAuthority("CLIENT")
+                .anyRequest().denyAll();
 
         http.formLogin()
                 .usernameParameter("email")
@@ -47,20 +61,23 @@ class WebAuthorization {
 
         http.logout().logoutUrl("/api/logout").deleteCookies("JSESSIONID");
 
+        // desactivar la comprobación de tokens CSRF
         http.csrf().disable();
 
-
+        //deshabilita frameOptions para que se pueda acceder a h2-console
         http.headers().frameOptions().disable();
 
-
+        // si el usuario no está autenticado, simplemente envíe una respuesta de falla de autenticación
         http.exceptionHandling().authenticationEntryPoint((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
 
-
+        // si el inicio de sesión es exitoso, simplemente borre las alertas que solicitan autenticación
         http.formLogin().successHandler((req, res, auth) -> clearAuthenticationAttributes(req));
 
+        // si el inicio de sesión falla, simplemente envíe una respuesta de falla de autenticación
 
         http.formLogin().failureHandler((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
 
+        // si el cierre de sesión es exitoso, simplemente envíe una respuesta exitosa
 
         http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
 
@@ -71,9 +88,7 @@ class WebAuthorization {
     private void clearAuthenticationAttributes(HttpServletRequest request) {
 
         HttpSession session = request.getSession(false);
-
         if (session != null) {
-
             session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
 
         }

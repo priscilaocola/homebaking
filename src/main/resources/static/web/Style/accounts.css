@@ -95,7 +95,7 @@ video {
 
 
 #accountMainContainer {
-  min-width: 30rem;
+  min-width: 15rem;
   height: 25rem;
   padding-left: 1rem;
   border-radius: 1rem;
@@ -123,6 +123,9 @@ border: 2px solid yellow;
 
 .logito{
  width: 4rem; 
+}
+.class1{
+  height: 5rem !important;
 }
 
 /* loans */

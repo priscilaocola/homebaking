@@ -67,6 +67,24 @@ let app = createApp({
             })
 
 
-        }
+        },
+        logout() {
+            Swal.fire({
+				title: 'Bye see you soon',
+				imageUrl: '../asset/BYE.png',
+				imageWidth: 400,
+				imageHeight: 300,
+			  preConfirm: login => {
+					return axios
+						.post('/api/logout')
+						.then(response => {
+							window.location.href = '/web/pages/index.html';
+						})
+						.catch(error => {
+							Swal.showValidationMessage(`Request failed: ${error}`);
+						});
+				},
+			});
+		},
     }
 }).mount('#app');

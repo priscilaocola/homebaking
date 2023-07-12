@@ -28,10 +28,9 @@ createApp({
     logout() {
       Swal.fire({
   title: 'Bye see you soon',
-  imageUrl: '../asset/BYE BYE.png',
+  imageUrl: '../asset/BYE.png',
   imageWidth: 400,
-  imageHeight: 250,
-  imageAlt: 'Custom image',
+  imageHeight: 300,
   preConfirm: login => {
     return axios
       .post('/api/logout')

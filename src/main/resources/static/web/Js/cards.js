@@ -36,7 +36,7 @@ createApp({
 				title: 'Bye see you soon',
 				imageUrl: '../asset/BYE BYE.png',
 				imageWidth: 400,
-				imageHeight: 250,
+				imageHeight: 300,
 				imageAlt: 'Custom image',
 			  preConfirm: login => {
 					return axios

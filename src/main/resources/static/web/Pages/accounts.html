@@ -44,8 +44,8 @@
           </template> 
          </div>
         
-        <div id="accountMainContainer" class="d-flex gap-2">
-          <div class="accountContainer text-white  text-center p-2 gap-1 m-2 mt-5 " v-for="account of accounts">
+        <div id="accountMainContainer" class="d-flex  justify-content-center">
+          <div  v-if="accounts.length != 0" class="accountContainer text-white  text-center p-2 gap-1 m-2 mt-5 " v-for="account of accounts">
             <h5>Number</h5>
             <p class="fs-3 text-bg-dark">{{account.number}}</p>
             <h5>Balance</h5>
@@ -54,6 +54,7 @@
             <p>{{account.creationDate}}</p>
             <a class="btn btn-warning fw-bold fs-5  border-light" v-bind:href="`./account.html?id=${account.id}`">Transactions</a>
           </div>
+          <p v-else class="text-center rounded mt-3 border border-warning p-2 mb-3 text-bg-dark p-1  fs-4 class1">You don't have accounts!</p>
       </div>
        </div>
     <div class="flex-column">
@@ -62,7 +63,7 @@
           <h2 class="text-center fs-2 rounded mt-3 border border-warning p-2 mb-3 text-bg-dark p-1">MY LOANS</h2>
           <a class="shadow__btn fs-6 fw-bold border-black text-light" href="./loan-application.html ">APPLY</a>
         </div>
-          <div id="loanContainer" class="d-flex   m-3"> 
+          <div id="loanContainer" class="d-flex justify-content-center   m-3"> 
             <div v-if="loans.length != 0" v-for="loan of loans" class="accountContaines text-white text-center p-2 gap-1  mt-5 ">
               <p class="fs-4 text-bg-dark">{{loan.name}}</p>
               <h5>Amount</h5>
@@ -70,6 +71,7 @@
               <h5>Payments</h5>
               <p>{{loan.payments}}</p>
             </div>
+            <p v-else class="text-center fs-2 rounded mt-3 border border-warning p-2 mb-3 text-bg-dark p-1 class1">"You don't have loans!"</p>
           </div>
       </div> 
     </div>

@@ -94,16 +94,27 @@ main {
   }
   .containerTrasf{
     width: 20rem;
-    height: 9rem;
+    height: 10rem;
+padding: 1rem;
+border: 5px solid yellow;
+    border-radius: 1rem;
+   background-image: url(../asset/desktop-wallpaper-gold-color-gold-colour.jpg); 
+    background-size: cover;
+  }
+  .containerTrasfs{
+    width: 20rem;
+    height: 12rem;
+    border: 5px solid yellow;
 padding: 1rem;
     border-radius: 1rem;
-   background-image: url(../asset/silver.jpg); 
+   background-image: url(../asset/desktop-wallpaper-gold-color-gold-colour.jpg); 
     background-size: cover;
   }
   .container2{
-    width: 25rem;
-    min-height: 30rem;
+  max-width:40rem;
+  height: 30rem;
     padding: 2rem;
+   
     border-radius: 1rem;
    background-image: url(../asset/bg-img-bank2.jpg); 
     background-size: cover;
@@ -112,9 +123,12 @@ padding: 1rem;
     width: 20rem;
     height: 23rem;
     padding: 1rem;
+    border: 5px solid yellow;
     border-radius: 1rem;
-   background-image: url(../asset/silver.jpg); 
-    background-size: cover;
+   background-image: url(../asset/desktop-wallpaper-gold-color-gold-colour.jpg)
+  }
+  .main2{
+    min-height: 63vh;
   }
   
   @media only screen and  (max-width: 520px) {

@@ -18,6 +18,16 @@ body {
   background-image: url(../asset/digital-world.jpg);
   background-size: cover;
 }
+.form2 {
+  margin-bottom: 1rem;
+  width: 25rem;
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 2rem;
+  background-image: url(../asset/digital-world.jpg);
+  background-size: cover;
+}
+
 
 main {
   min-height: 70vh;
@@ -37,8 +47,11 @@ main {
   font-weight: 500;
   font-size: 1rem;
   width: 40rem;
+  min-height:20rem;
+  padding:2rem;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
+
 
 h2 {
   text-align: center;
@@ -66,14 +79,6 @@ header {
   background: rgb(244, 144, 13);
   background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
 }
-
-/* #navbar {
-  background: rgb(233, 240, 27);
-  background: linear-gradient(0deg, rgb(245, 194, 8) 0%, rgba(13, 13, 13, 0.695) 100%);
-  padding: 1.3rem;
-  border-radius: 1rem;
-  box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-} */
 
 
 #navbar a {
@@ -105,7 +110,7 @@ footer {
 }
 .buttonAdd {
   border-radius: 1rem;
-  color: white;
+  color: #fbf6f6;
   width: 5rem;
 }
 th,
@@ -126,7 +131,40 @@ td {
   }
  
   .table{
-    width: 20rem;
+    width: 21rem;
+    padding: 0;
+    font-weight: 100;
+  font-size: 12px;
   }
+  .buttonAdd {
+    border-radius: 1rem;
+    color: white;
+    width: 3rem;
+    font-size: 10px;
+  }
+  .div-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 450px;
+    margin: 35px auto;
+    height: 24em;
+  }
+  .preh3 {
+    width: 50em;
+    padding: 15px;
+  }
+  #pre {
+    height: 40em !important;
+    background-color: rgba(0, 0, 0, 0.67);
+    backdrop-filter: blur(50px);
+    overflow-x: hidden;
+    border-radius: 20px;
+  }
+  .table {
+    width: 50%;
+    margin: auto;
+  }
+  
   
 }

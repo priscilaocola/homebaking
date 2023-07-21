@@ -11,6 +11,16 @@ import org.springframework.stereotype.Service;
 public class ClientLoanServiceimplement implements ClientLoanService {
     @Autowired
     private ClientLoanRepository clientLoanRepository;
+
+    @Override
+    public ClientLoan getClientLoan(Long id) {
+        return clientLoanRepository.findById(id).orElse(null);
+    }
+    @Override
+    public ClientLoan findById(Long id) {
+        return clientLoanRepository.findById(id).orElse(null);
+    }
+
     @Override
     public void saveClientLoan(ClientLoan clientLoan) {
         clientLoanRepository.save(clientLoan);

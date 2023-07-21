@@ -10,9 +10,14 @@ public class ClientLoan {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private long id;
-    private double amount;
-    private int payments;
+    private Long id;
+    private Double amount;
+    private Integer payments;
+
+    private Integer remainPayments;
+    private Double remainAmount;
+
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
     private Client client;
@@ -23,25 +28,40 @@ public class ClientLoan {
 
     public ClientLoan() {
     }
-    public ClientLoan(double amount, int payments) {
+    public ClientLoan(Double amount, Integer payments,Integer remainPayments, Double remainAmount ) {
         this.amount = amount;
         this.payments = payments;
+        this.remainPayments=remainPayments;
+        this.remainAmount=remainAmount;
     }
-    public long getId() {
+    public Long getId() {
         return id;
     }
-    public double getAmount() {
+
+    public Double getAmount() {
         return amount;
     }
-    public void setAmount(double amount) {
+
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
-    public int getPayments() {
+
+    public Integer getPayments() {
         return payments;
     }
-    public void setPayments(int payments) {
+
+    public void setPayments(Integer payments) {
         this.payments = payments;
     }
+
+    public void setRemainPayments(Integer remainPayments) {
+        this.remainPayments = remainPayments;
+    }
+
+    public void setRemainAmount(Double remainAmount) {
+        this.remainAmount = remainAmount;
+    }
+
     public Client getClient() {
         return client;
     }
@@ -51,8 +71,18 @@ public class ClientLoan {
     public Loan getLoan() {
         return loan;
     }
+
+    public Integer getRemainPayments() {
+        return remainPayments;
+    }
+
+    public Double getRemainAmount() {
+        return remainAmount;
+    }
+
     public void setLoan(Loan loan) {
         this.loan = loan;
     }
+
 }
 

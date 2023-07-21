@@ -7,6 +7,7 @@ import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.repositories.CardRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
 import com.mindhub.homebanking.services.CardService;
+import com.mindhub.homebanking.utils.UtilsCards;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,37 @@ public class CardServiceImplement implements CardService {
     }
     @Override
     public Card findByCvv(int cvv) {
+
         return cardRepository.findByCvv(cvv);
+    }
+
+    @Override
+    public String randomNumberCards() {
+        String randomCards = "";
+        String randomCardsEnd = "";
+        for (int i = 0; i < 4; i++){
+            randomCards += UtilsCards.randomNumberC() + "-";
+        }
+        randomCardsEnd = randomCards.substring(0, randomCards.length()-1);
+        return randomCardsEnd;
+    }
+    @Override
+    public int randomCvv() {
+        return UtilsCards.randomNumberCvv();
+    }
+
+    @Override
+    public String cardNumberNotRepeat() {
+        String cardsNumber;
+        do {
+            cardsNumber = randomNumberCards();
+        }while(findByNumber(cardsNumber) != null);
+        return cardsNumber;
+    }
+
+    @Override
+    public Card findById(long id) {
+        return cardRepository.findById(id).orElse(null);
     }
 
     @Override

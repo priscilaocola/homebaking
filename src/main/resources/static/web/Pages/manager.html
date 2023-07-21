@@ -13,24 +13,22 @@
 </head>
 
 <body>
-   
+    <div id="app" >
     <header class="d-flex justify-content-center ">
-       
         <div class="navbar">
             <img class="logo d-flex justify-content-center " src="../asset/logo.png" alt="logo">
             <nav id="navbar" class="d-flex gap-3 justify-content-around flex-wrap">
                 <a href="./index.html">HOME</a>
                 <a href="#">ADMIN </a>
-                <a href="./accounts.html">ACOUNTS & LOANS</a>
-                <a href="./cards.html">CARDS</a>
-            </nav>
+                </nav>
+                <button @click="logout()" class="btn btn-danger fw-bold  border-black m-5">LOG OUT</button>
         </div>
     </header>
     <main>
-        <div id="app" class="d-flex flex-column align-items-center"">
+        <div class="d-flex flex-column align-items-center">
             <div class="form">
                 <h1>Client Manager</h1>
-                <form v-on:submit="addClient()">
+                <form>
                     <div class="mb-3">
                         <label for="firstName" class="form-label">Name:</label>
                         <input type="text" class="form-control" id="firstName" v-model="obj.firstName">
@@ -44,7 +42,7 @@
                         <input type="email" class="form-control" id="email" v-model="obj.email">
                     </div>
                     <div >
-                        <button type="submit" class="buttonAd btn btn-danger">Add Client</button>
+                        <button type="button" class="buttonAd btn btn-danger" @click="addClient()">Add Client</button>
                     </div>
                 </form>
             </div>
@@ -64,19 +62,42 @@
                             <td>{{ client.firstName }}</td>
                             <td>{{ client.lastName }}</td>
                             <td>{{ client.email }}</td>
-                            <td><button class="buttonAdd btn btn-danger">Delete</button></td>
+                            <td><button class="buttonAdd btn btn-danger"  @click="deleteClient(clients.id)">Delete</button></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <section class="m-3">
                 <div id="json" class="d-flex flex-column p-1">
                     <h4 class=" fw-semibold ">Client REST Response</h4>
                     <pre>{{clients}}</pre>
                 </div>
-            </section>
             
         </div>
+        
+        <div class="form2 d-flex  flex-wrap pt-5">
+            <div class=" d-flex flex-column">
+                <h2 class="text-center text-bg-warning">Enter new loan</h2>
+                <form class=" d-flex flex-column justify-content-center align-items-center gap-3">
+                    <label class="text-bg-dark  p-2" for="loanName">Enter Loan Name</label>
+                    <input v-model="loan.name" type="text" id="loanName">
+                    <label class="text-bg-dark  p-2" for="loanMaxAmount">Enter max amount for new loan</label>
+                    <input v-model="loan.maxAmount" type="number" id="loanMaxAmount">
+                    <div class="text-center" >
+                        <label class="text-bg-dark p-2 "  for="loanPayments">Enter payments one by one</label>
+                        <input class="mt-2"  v-model="inputNumber" type="number" id="loanPayments" name="loanPayments">
+                        <div class="d-flex flex-column justify-content-center gap-3">
+                            <button @click.prevent="addNumber()" class="btn btn-danger mt-3 fw-bold text-center">Add payment</button>
+                            <button @click.prevent="clearPayments()" class="btn btn-success fw-bold">Clear payments</button>
+                        </div>
+                        <p class="text-center text-bg-warning  p-2 mt-3">Payments added: {{loan.payments}}</p>
+                    </div>
+                    <label class="text-bg-dark  p-2" for="loanInterest">Enter the interest  %</label>
+                    <input v-model="loan.interest" type="number" name="loanInterest" id="loanInterest">
+                    <button class="btn btn-primary m-2" @click.prevent="createLoan()">Add Loan</button>
+                </form>
+            </div>
+        </div>
+       
     </main>
     <footer class="d-flex justify-content-around  flex-wrap">
         <div class=" text-center m-1">
@@ -91,11 +112,13 @@
          <a href="#"><img class="logito" src="../asset/favicon.png" alt=""></a>
         </div>
       </footer>
+    </div>
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
                         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
                         crossorigin="anonymous"></script>
-                        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+                    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+                    <script src="https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js"></script>
                     <script src="../js/manager.js"></script>
 
 </body>

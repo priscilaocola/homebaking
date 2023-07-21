@@ -10,5 +10,7 @@ public interface AccountService {
 
     AccountDTO getAccountID(Long id);
     Account findByNumber(String number);
+    Account findById(long id);
+    String randomNumberAccount();
     void saveAccount(Account account);
 }

@@ -16,20 +16,21 @@ bootRun {
 }
 
 dependencies {
+//	implementation 'org.postgresql:postgresql'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-//	runtimeOnly 'com.h2database:h2'
+	implementation 'net.incongru:wiseio:1.0-rc1'
+	implementation 'net.incongru:wiseio:1.0-rc1'
+	implementation 'net.incongru:wiseio:1.0-rc1'
+	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.postgresql:postgresql'
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.12.3'
+	implementation 'com.itextpdf:itextpdf:5.5.13.3'
+
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
-}
-bootRun {
-
-	sourceResources sourceSets.main
-
 }

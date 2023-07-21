@@ -20,6 +20,7 @@ import java.time.LocalDate;
         private LocalDate fromDate;
         private LocalDate thruDate;
         private int cvv;
+      private boolean active;
 
 
         @ManyToOne(fetch = FetchType.EAGER)
@@ -27,7 +28,7 @@ import java.time.LocalDate;
         private Client client;
 
        public Card (){}
-        public Card( CardType type, CardColor color, String number, LocalDate fromDate, LocalDate thruDate, int cvv, String cardHolder) {
+        public Card( CardType type, CardColor color, String number, LocalDate fromDate, LocalDate thruDate, int cvv, String cardHolder,boolean active) {
             this.cardHolder =cardHolder;
             this.type = type;
             this.color = color;
@@ -35,6 +36,8 @@ import java.time.LocalDate;
             this.fromDate = fromDate;
             this.thruDate = thruDate;
             this.cvv = cvv;
+           this.active = active;
+
 
         }
 
@@ -63,5 +66,12 @@ import java.time.LocalDate;
 
         public Client getClient() {return client;}
         public void setClient(Client client) {this.client = client;}
+   public boolean getActive() {
+        return active;
+   }
+
+   public void setActive(boolean active) {
+       this.active = active;
+   }
 
     }

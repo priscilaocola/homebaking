@@ -20,7 +20,7 @@
     box-shadow: rgba(4, 38, 77, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   } */
   main {
-    min-height: 75vh;
+    min-height: 63vh;
     margin-top: 2rem;
 	margin-bottom: 1rem;
   }
@@ -51,7 +51,8 @@
 body{
 	margin:0;
 	color:#6a6f8c;
-	background-image: url(../asset/favicon.png);
+	background-image: url(../asset/digital-world.jpg);
+	background-size: cover;
 	font:600 16px/18px 'Open Sans',sans-serif;
 }
 *,:after,:before{box-sizing:border-box}
@@ -62,11 +63,12 @@ a{color:white;text-decoration:none}
 .login-wrap{
 	width:100%;
 	margin:auto;
-	max-width:505px;
-	min-height:650px;
+	max-width:420px;
+	min-height:560px;
 	position:relative;
 	background:url(../asset/bg-img-bank2.jpg) no-repeat center;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+	border-radius: 18px;
 }
 .login-html{
 	width:100%;
@@ -74,6 +76,7 @@ a{color:white;text-decoration:none}
 	position:absolute;
 	padding:90px 70px 50px 70px;
 	background:rgba(27,27,27,.6);
+	border-radius: 18px;
 }
 .login-html .sign-in-htm,
 .login-html .sign-up-htm{

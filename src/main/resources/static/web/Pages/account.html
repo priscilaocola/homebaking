@@ -22,47 +22,63 @@
                     <a href="./accounts.html">ACOUNTS & LOANS</a>
                     <a href="./cards.html">CARDS</a>
                     <a href="./transfers.html">TRANSFERS</a>
-                    
+
                 </nav>
                 <button @click="logout()" class="btn btn-danger fw-bold  border-black m-5">LOGOUT</button>
             </div>
 
         </header>
-        <main class="d-flex justify-content-center">
-            <video autoplay loop muted>
-                <source src="../asset/fondo3 .mp4" type="video/mp4">
-            </video>
-            <div class="container  ">
-                <h1 class="text-center text-white text-bg-dark " >All Transactions</h1>
-                <table class="table table-bordered">
-                    <thead>
+        <main>
+            <h1 class="text-center text-warning text-bg-dark ">- All Transactions-</h1>
+            
+           
+
+                <div class="form-date d-flex justify-content-center align-items-end gap-2 mt-5 mb-5">
+                  
+                    <div>
+                        <label class="text-bg-warning text-trans mb-1">Start date</label>
+                        <input class="form-control" type="date" id="start" min="" max="" v-model="dateStart" />
+                    </div>
+                    <div>
+                        <label class="text-bg-warning text-trans mb-1">End date</label>
+                        <input class="form-control" type="date" id="end" min="" max="" v-model="dateEnd" />
+                    </div>
+                    <button class="btn btn-danger" @click="pdfDow">Dowload Transactions</button>
+                </div>
+              
+            <div class="div-trans d-flex justify-content-center">
+                <table class="table container table-responsive">
+                    <thead class="table-light text-center">
                         <tr>
-                            <th class="titulos text-center">ID</th>
-                            <th class="titulos text-center">AMOUNT</th>
-                            <th class="titulos text-center">TYPE</th>
-                            <th class="titulos text-center">DESCRIPTION</th>
-                            <th class="titulos text-center">DATE</th>
-                            <th class="titulos text-center">TIME</th>
+                            <th class="titulos text-center text-trans">ID</th>
+                            <td  class="titulos text-center text-trans">TYPE</td>
+                            <td  class="titulos text-center text-trans">AMOUNT</td>
+                            <td  class="titulos text-center text-trans">DESCRIPTION</td>
+                            <td class="titulos text-center text-trans">DATE</td>
+                            <td class="titulos text-center text-trans">TOTAL BALANCE</td>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr v-for="transaction of allAccounts " :key="transaction.id">
-                            <td class="text-center">{{ transaction.id }}</td>
-                            <td class="text-center"><span v-if="transaction.type == 'DEBITO'">-</span>
-                                ${{ transaction.amount }}</td>
-                            <td class="text-center text-success" v-if="transaction.type == 'CREDIT'">
-                                {{transaction.type}}</td>
-                            <td class="text-center text-danger" v-else>{{transaction.type}}</td>
-                            <td class="text-center">{{transaction.description}}</td>
-                            <td class="text-center">{{transaction.date.slice(0,10)}}</td>
-                            <td class="text-center">{{transaction.date.slice(11,19)}}</td>
-
+                    <tbody class="text-center">
+                        <tr :class="transaction.type" v-for="transaction of account" :key="transaction.id">
+                            <td class="text-center text-trans">{{ transaction.id }}</td>
+                            <td class="text-trans">{{transaction.type}}</td>
+                            <template v-if="transaction.type == 'CREDIT'">
+                                <td class="text-trans CREDIT">+${{transaction.amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</td>
+                            </template>
+                            <template v-else>
+                                <td class="text-trans DEBIT">${{transaction.amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</td>
+                            </template>
+                            <td  class="text-trans">{{transaction.description}}</td>
+                            <td  class="text-trans">{{transaction.date.slice(0,10)}} {{transaction.date.slice(11,16)}}</td>
+                            <td  class="text-trans">${{transaction.balanceTotal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</td>
                         </tr>
                     </tbody>
                 </table>
-                <a class="btn btn-danger fw-bold  border-black m-5" href="./accounts.html">Go Back</a>
+                
             </div>
-            </div>
+            <a class="btn  fw-bold btn-account d-flex m-auto p-3 " href="./accounts.html">Go Back</a>
+        
+          
         </main>
         <footer class="d-flex justify-content-around ">
             <div class=" text-center ">
@@ -87,6 +103,8 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="../js/account.js"></script>
 </body>
 

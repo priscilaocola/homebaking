@@ -15,7 +15,8 @@ public class Loan {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private String name;
-    private double maxAmount;
+    private Double maxAmount;
+   private Integer interests;
     @ElementCollection
     private List<Integer> payments;
     @OneToMany (mappedBy = "loan", fetch = FetchType.EAGER)
@@ -24,10 +25,11 @@ public class Loan {
 
     public Loan() {
     }
-    public Loan(String name, double maxAmount, List<Integer> payments) {
+    public Loan(String name, Double maxAmount, List<Integer> payments,Integer interests) {
         this.name = name;
         this.maxAmount = maxAmount;
         this.payments = payments;
+        this.interests = interests;
     }
     public long getId() {
         return id;
@@ -38,7 +40,7 @@ public class Loan {
     public void setName(String name) {
         this.name = name;
     }
-    public double getMaxAmount() {
+    public Double getMaxAmount() {
         return maxAmount;
     }
     public void setMaxAmount(double maxAmount) {
@@ -62,6 +64,12 @@ public class Loan {
     public void addClientLoan(ClientLoan clientLoan) {
         clientLoan.setLoan(this);
         this.clientLoans.add(clientLoan);
+    }
+    public Integer getInterests() {
+        return interests;
+    }
+    public void setInterests(Integer interests) {
+        this.interests = interests;
     }
 
 

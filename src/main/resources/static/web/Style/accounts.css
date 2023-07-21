@@ -22,10 +22,110 @@ header {
 } */
 main {
   min-height: 78vh;
-  background-image: url(../asset/digital-world.jpg);
+  background-image: url(../asset/money-gc38889a2e_1280.jpg);
   background-size: cover;
-
   
+}
+/* ********* */
+.encabezado {
+	height: 7em;
+
+	background-color: rgb(24, 22, 20);
+	border-top: 3px solid rgb(255, 255, 1);
+	border-bottom: 2px solid rgb(255, 255, 1);
+}
+.encabezado > h1 {
+height: 2em;
+	margin: 0 !important;
+	color: white;
+}
+.text-welcome {
+	color: #fdfdfd !important;
+
+}
+.span-vue {
+	color: rgb(0, 0, 0);
+	font-size: 1.2em;
+  font-weight: bolder;
+}
+
+.icon-debit {
+	width: 4em;
+	height: 3em;
+	object-fit: contain;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.btn-account {
+	padding: 15px;
+	border-radius: 10px;
+	background: rgb(244,110,87);
+background: linear-gradient(90deg, rgba(244,110,87,1) 9%, rgba(247,7,7,1) 27%, rgba(138,10,10,1) 69%);
+	color: rgb(7, 7, 7);
+  font-weight: bold;
+	border-bottom: 4px solid #ffffff;
+	border-right: 2px solid #fffefb;
+}
+.h3-account {
+	font-size: 3.5em;
+	text-align: center;
+	padding: 10px;
+	border-bottom: 5px solid #ff5100;
+	max-width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+  color: rgb(255, 253, 253);
+  background-color: rgb(5, 5, 5);
+}
+.h5-account {
+	max-width: fit-content;
+	margin: auto;
+	padding-top: 5px;
+  font-weight:bold ;
+}
+.div-account {
+	padding-bottom: 3em !important;
+
+}
+.h4{
+  color: #fffbfb;
+  background-color: black;
+}
+.span {
+	color: #f70000;
+	font-weight: bold;
+}
+.div-main {
+	width: 20em;
+	height: 32em;
+  background: linear-gradient(90deg, rgb(250, 201, 3) 9%, rgba(246,184,47,1) 27%, rgb(251, 201, 3) 69%);
+	border-radius: 20px;
+  border: 5px solid black;
+	box-shadow: 1px 1px 20px 5px #ffbc03;
+}
+.btn-loan {
+	cursor: pointer;
+	text-decoration: none;
+	padding: 15px;
+	width: 13em;
+	border-radius: 10px;
+	background: linear-gradient(90deg, rgba(182,182,182,1) 9%, rgb(30, 30, 30) 37%, rgba(159,158,155,1) 85%);
+	color: rgb(255, 217, 0);
+	border-bottom: 4px solid #e7d49e;
+	border-right: 2px solid #e7d49e;
+  font-size: 18px;
+  font-weight: bold;
+}
+.btn-loan:hover {
+	transform: translateY(-3%);
+}
+.icon-delete {
+	font-size: 2em;
+	cursor: pointer;
+}
+.icon-pay {
+	font-size: 1.5em;
 }
 footer {
   min-height: 12vh;
@@ -66,7 +166,7 @@ footer {
 #titleContainer1 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
-  background: linear-gradient(0deg, rgba(28, 28, 28, 0.874) 0%, rgb(255, 242, 2) 100%);
+  background: linear-gradient(0deg, rgb(255, 238, 1) 0%, rgb(16, 16, 14) 100%);
   width: 40rem;
   height: 8rem;
   padding: 1rem;
@@ -95,20 +195,20 @@ video {
 
 
 #accountMainContainer {
-  min-width: 15rem;
-  height: 25rem;
+  min-width: 10rem;
+  height: 30rem;
   padding-left: 1rem;
   border-radius: 1rem;
- background-image: url(../asset/transactions5.jpeg); 
+ background-image: url(../asset/money-gc38889a2e_1280.jpg); 
   background-size: cover;
-  border: 3px solid rgb(247, 255, 1);
+  border: 3px solid rgb(255, 255, 255);
 }
 
 .accountContainer {
   width: 13rem;
-height: 19rem;
+height: 20rem;
 border: 2px solid yellow;
-  background: linear-gradient(0deg, rgb(8, 8, 8) 0%, rgba(0, 0, 0, 0.695) 100%);
+  background: black;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1000;
   border-radius: 2rem;
@@ -141,10 +241,10 @@ border: 2px solid yellow;
 }
 #loanContainer {
  min-width: 45rem;
-  height: 18rem;
+  height: 20rem;
   border-radius: 1rem;
-  border: 2px solid rgb(247, 255, 1);
- background-image: url(../asset/transactions5.jpeg); 
+  border: 3px solid rgb(0, 0, 0);
+ background-image: url(../asset/loan1\ \(2\).jpg); 
   background-size: cover;
 }
 .shadow__btn{

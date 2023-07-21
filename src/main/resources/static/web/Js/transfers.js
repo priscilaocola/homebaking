@@ -36,11 +36,13 @@ let app = createApp({
         },
 
         addTransfer() {
-            axios.post('/api/transactions', `amount=${this.amount}&description=${this.description}&accountO=${this.selectAccount}&accountD=${this.account2}`)
+            axios.post('/api/transactions', `amount=${this.amount}&description=${this.description}&accountOrigin=${this.selectAccount}&accountDestiny=${this.account2}`)
                 .then((response) => {
                     Swal.fire({
-                        icon: 'success',
-                        text: 'The transaction was a success',
+                        title: 'Successful Transaction',
+                        imageUrl: '../asset/sucesso.png',
+                        imageWidth: 400,
+                        imageHeight: 300,
                         onClose: () => {
                             window.location.href = "/web/pages/accounts.html";
                         }

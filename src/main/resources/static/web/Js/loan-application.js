@@ -12,6 +12,7 @@ createApp({
 			paymentsFilter: '',
 			loanType: '',
 			cuotas: 0,
+			finalAmount: 0,
 		};
 	},
 	created() {
@@ -41,20 +42,21 @@ createApp({
 			})[0];
 		},
 		loanCreate() {
+			console.log(this.loanID,this.amount,this.payments,this.account)
 			this.loanID = this.paymentsFilter.id;
 			Swal.fire({
 				title: 'Are you sure you want to apply for this loan?',
 				showCancelButton: true,
-				confirmButtonText: 'Confirmed',
+				confirmButtonText: 'Confirm request',
+                denyButtonText: `Go back`,
 				confirmButtonColor: '#7c601893',
 				preConfirm: () => {
-					return axios.post('/api/loans', {
-						loanID: `${this.loanID}`,
-						amount: `${this.amount}`,
-						payments: `${this.payments}`,
-						accountDestiny: `${this.account}`,
+						
+			return axios.post('/api/loans',{loanID: `${this.loanID}`,amount: `${this.amount}`,
+				payments: `${this.payments}`,accountDestiny: `${this.account}`})
+					}
 					})
-						.then(response => {
+					.then(response => {
 							Swal.fire({
 								position: 'center',
 								text: 'LOAN APPROVED',
@@ -70,10 +72,9 @@ createApp({
 							confirmButtonColor: '#7c601893',
 						}));
 				},
-			});
-		},
 		interests() {
-			this.cuotas = (this.amount * 1.2) / this.payments;
+			this.cuotas = (this.amount * this.paymentsFilter.interests) / this.payments;
+			this.finalAmount = this.amount * this.paymentsFilter.interests;
 		},
 		logout() {
             Swal.fire({

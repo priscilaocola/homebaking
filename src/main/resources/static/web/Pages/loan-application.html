@@ -73,11 +73,11 @@
                     </div>
                     <p class="text-p-loans">Remember that each loan has a different interest rate</p>
                     <h4 class="text-light text-center mb-1">INTEREST RATE : <span
-                            class="text-light">{{paymentsFilter.interests}}</span></h4>
+                            class="text-light">{{paymentsFilter.interests}}%</span></h4>
                     <h4 class="text-light text-center mb-2">MAX AMOUNT : U$D <span
                             class="text-light">{{paymentsFilter.maxAmount}}</span></h4>
                     <button type="button" class="btn btn-warning fw-bold fs-5 border-light mt-2 d-flex m-auto"
-                        @click="loanCreate">REQUEST</button>
+                        @click="loanCreate()">REQUEST</button>
                 </form>
                 <div class="div-form-loans">
                     <ul class="table container">

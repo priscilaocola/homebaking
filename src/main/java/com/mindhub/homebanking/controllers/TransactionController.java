@@ -224,7 +224,7 @@ private ClientService clientService;
         transactionService.saveTransaction(transactionOrigin);
         transactionService.saveTransaction(transactionDestin);
 
-        return new ResponseEntity<>("Transaction Sucess",HttpStatus.CREATED);
+        return new ResponseEntity<>("success ful transaction",HttpStatus.CREATED);
     }
 
 }

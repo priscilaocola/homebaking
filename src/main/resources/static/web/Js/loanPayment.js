@@ -1,30 +1,30 @@
-let { createApp } = Vue;
+const { createApp } = Vue;
 createApp({
     data() {
         return {
-            getId: "", 
-            loan: {},
-            idLoan: null,
             accountPay: '',
             accounts: [],
+            account:[],
+            isActive:[],
+            getId: "", 
+            loan: {},
+            idLoan: null, 
             errMsg: ''
         }
     },
     created() {
-        this.getLoanDetails()
-        this.getActiveAccounts()
+        this.loanInfo()
+        this.activeAccounts()
     },
     methods: {
-        loanPaymentRequest() {
+        loanRequest() {
             Swal.fire({
                 title: 'Do you want to make a payment for this loan?',
-                showDenyButton: true,
                 showCancelButton: true,
-                confirmButtonText: 'Confirm payment',
-                denyButtonText: `Go back`,
+                confirmButtonText: 'Confirm payment',  
             }).then((res) => {
-                if (res.isConfirmed) {
-                    axios.post(`/api/clientLoan/payments?loanToPay=${this.idLoan}&account=${this.accountPay}`)
+                if (res.value) {
+                    axios.post(`/api/clientLoan/payments?loanPay=${this.idLoan}&account=${this.accountPay}`)
                         .then(res => {
                             Swal.fire({
                                 position: 'center',
@@ -49,13 +49,15 @@ createApp({
                 }
             })
         },
-        getActiveAccounts() {
+        activeAccounts() {
             axios.get(`/api/clients/current/accounts`)
-                .then(res => {
-                    this.accounts = res.data.sort((a, b) => a.id - b.id)
+                .then(response => {
+                    this.isActive = response.data;
+                    this.isActive.sort((a,b)=> a.id - b.id)
                 }).catch(err => console.log(err))
         },
-        getLoanDetails() {
+      
+        loanInfo() {
             this.  getId = new URLSearchParams(location.search).get('id')
             axios.get(`/api/clientLoans/${this.getId}`)
                 .then(res => {
@@ -66,28 +68,28 @@ createApp({
                     console.log(err)
                 })
         },
-        paymentsCalculator(amount, payments) {
+        paymentsCalcu(amount, payments) {
             let division = amount / payments
             let formatDivision = parseFloat(division.toFixed(2))
             return formatDivision.toLocaleString()
         },
-        sessionLogOut() {
-            axios.post("/api/logout")
-                .then(res => {
-                    if (res.status == 200) {
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: 'Bye bye!',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                        setTimeout(() => {
-                            window.location.href = "/web/pages/index.html";
-                        }, 1800)
-                    }
-                    console.log(res)
-                }).catch(err => { console.log(err) })
-        }
+        logout() {
+            Swal.fire({
+              title: 'Bye see you soon',
+              imageUrl: '../asset/BYE.png',
+              imageWidth: 400,
+              imageHeight: 300,
+              preConfirm: login => {
+                return axios
+                  .post('/api/logout')
+                  .then(response => {
+                    window.location.href = '/web/pages/index.html';
+                  })
+                  .catch(error => {
+                    Swal.showValidationMessage(`Request failed: ${error}`);
+                  });
+              },
+            });
+          },
     }
 }).mount("#app")

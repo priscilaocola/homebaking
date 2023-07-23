@@ -77,25 +77,45 @@ public class AccountController {
         return accounts.stream().map(account -> new AccountDTO(account)).collect(Collectors.toList());
     }
     @PatchMapping ("/clients/current/accounts")
-    public ResponseEntity<Object> deleteAccount(Authentication authentication, @RequestParam String number) {
-        if (authentication.getName() == null) {
+    public ResponseEntity<Object> deleteAccount(@RequestParam Long id, Authentication authentication) {
+
+        if (id == null) {
+            return new ResponseEntity<>("Missing account data", HttpStatus.FORBIDDEN);
+        }
+
+        if (authentication == null) {
             return new ResponseEntity<>("Client not authenticated", HttpStatus.FORBIDDEN);
         }
-        if (number.isBlank()) {
-            return new ResponseEntity<>("Account number incorrect", HttpStatus.FORBIDDEN);
+
+        Client client = clientService.findByEmail(authentication.getName());
+        if (client == null) {
+            return new ResponseEntity<>("Client not found", HttpStatus.NOT_FOUND);
         }
-        Account account = accountService.findByNumber(number);
-        List<Transaction> transactions = account.getTransactions().stream().filter(transaction -> transaction.isActive()).collect(Collectors.toList());
+
+        Account account = accountService.findById(id);
+        if (account == null) {
+            return new ResponseEntity<>("Account not found", HttpStatus.NOT_FOUND);
+        }
+
         if (account.getBalance() != 0) {
             return new ResponseEntity<>("Account balance must be 0 to delete", HttpStatus.FORBIDDEN);
         }
+
+        if (!client.getAccounts().contains(account)) {
+            return new ResponseEntity<>("This account is not associated with the authenticated client", HttpStatus.FORBIDDEN);
+        }
+
+        List<Transaction> transactions = account.getTransactions().stream().filter(Transaction -> Transaction.isActive())
+                .collect(Collectors.toList());
         transactions.forEach(transaction -> {transaction.setActive(false); transactionService.saveTransaction(transaction);});
         account.setActive(false);
         accountService.saveAccount(account);
+
         return new ResponseEntity<>("Account deleted", HttpStatus.OK);
     }
+    }
 
-}
+
 
 
 

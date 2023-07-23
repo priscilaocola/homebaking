@@ -74,7 +74,7 @@ private PasswordEncoder passwordEncoder;
 			Transaction transaction5 = new Transaction(-500.0,"Car fee",LocalDateTime.now(),TransactionType.DEBIT,true,account2.getBalance());
 			Transaction transaction6 = new Transaction(1000.0,"super market",LocalDateTime.now(), TransactionType.CREDIT,true,account2.getBalance());
 			Transaction transaction7 = new Transaction(-500.0,"retail purchase",LocalDateTime.now(),TransactionType.DEBIT,true,account2.getBalance());
-			Transaction transaction8 = new Transaction(7500.0, "Salary work", LocalDateTime.now(), TransactionType.CREDIT,true,account2.getBalance());
+			Transaction transaction8 = new Transaction(750.0, "Salary work", LocalDateTime.now(), TransactionType.CREDIT,true,account2.getBalance());
 
 			account2.addTransactions(transaction5);
 			account2.addTransactions(transaction6);
@@ -114,13 +114,13 @@ private PasswordEncoder passwordEncoder;
 			transactionRepository.save(transaction16);
 
 
-			Loan loan1 = new Loan("MORTGAGE", 500000.0, Arrays.asList(12,24,36,48,60),10);
-			Loan loan2 = new Loan("PERSON", 100000.0, Arrays.asList(6,12,24),20);
-			Loan loan3 = new Loan("AUTOMOTIVE", 300000.0, Arrays.asList(6,12,24,36),30);
-			ClientLoan clientLoan1 = new ClientLoan(400000.0, 60,30 , 300000.0);
+			Loan loan1 = new Loan("MORTGAGE", 500000.0, Arrays.asList(12,24,36,48,60),20);
+			Loan loan2 = new Loan("PERSON", 100000.0, Arrays.asList(6,12,24),12);
+			Loan loan3 = new Loan("AUTOMOTIVE", 300000.0, Arrays.asList(6,12,24,36),18);
+			ClientLoan clientLoan1 = new ClientLoan(400000.0, 60,30 , 333333.0);
 			ClientLoan clientLoan2 = new ClientLoan(50000.0, 12,12,50000.0 );
-			ClientLoan clientLoan3 = new ClientLoan(100000.0, 24,12,12200.0 );
-			ClientLoan clientLoan4 = new ClientLoan(200000.0, 36,12,15000.0);
+			ClientLoan clientLoan3 = new ClientLoan(100000.0, 24,12,50000.0 );
+			ClientLoan clientLoan4 = new ClientLoan(200000.0, 36,12,66666.0);
 
 			client1.addClientLoan(clientLoan1);
 			loan1.addClientLoan(clientLoan1);

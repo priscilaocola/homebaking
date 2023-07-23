@@ -1,6 +1,7 @@
 package com.mindhub.homebanking.controllers;
 
 
+import com.mindhub.homebanking.dtos.ClientLoanDTO;
 import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.services.AccountService;
 import com.mindhub.homebanking.services.ClientLoanService;
@@ -10,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -64,5 +62,17 @@ import java.time.LocalDateTime;
         clientLoanService.saveClientLoan(clientLoan);
         transactionService.saveTransaction(newTransaction);
         return new ResponseEntity<>("Loan payment correct", HttpStatus.OK);
+    }
+    @GetMapping("/clientLoans/{id}")
+    public ResponseEntity<?> getOneLoan(@PathVariable Long id, Authentication authentication) {
+        Client client = clientService.findByEmail(authentication.getName());
+        ClientLoan loan = clientLoanService.findById(id);
+        if (loan == null){
+            return new ResponseEntity<>("Loan not found", HttpStatus.NOT_FOUND);
+        }
+        if (!client.getClientLoans().contains(loan)) {
+            return new ResponseEntity<>("Is not your loan", HttpStatus.FORBIDDEN);
+        }
+        return new ResponseEntity<>(new ClientLoanDTO(loan), HttpStatus.OK);
     }
 }

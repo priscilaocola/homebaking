@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class AccountDTO {
 
-    private long id;
+    private Long id;
     private String number;
     private LocalDate creationDate;
     private double balance;
@@ -29,7 +29,7 @@ public class AccountDTO {
        this.type = account.getType();
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
     public String getNumber() {

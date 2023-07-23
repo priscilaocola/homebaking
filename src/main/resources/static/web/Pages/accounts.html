@@ -14,102 +14,114 @@
 <body>
   <div id="app">
 
- 
-  <header class="d-flex justify-content-around">
-    <div class="navbar">
-      <img class="logo" src="../asset/logo.png" alt="logo">
-      <nav id="navbar" class="d-flex gap-4 justify-content-around flex-wrap">
-        <a href="#">ACCOUNTS & LOANS</a>
-        <a href="./cards.html">CARDS</a>
-        <a href="./transfers.html">TRANSFERS</a>
-        
+
+    <header class="d-flex justify-content-around">
+      <div class="navbar">
+        <img class="logo" src="../asset/logo.png" alt="logo">
+        <nav id="navbar" class="d-flex gap-4 justify-content-around flex-wrap">
+          <a href="#">ACCOUNTS & LOANS</a>
+          <a href="./cards.html">CARDS</a>
+          <a href="./transfers.html">TRANSFERS</a>
+          <a href="./loanPayments.html">PAY LOAN</a>
+
+
         </nav>
         <button @click="logout()" class="btn btn-danger fw-bold  border-black m-5">LOG OUT</button>
-    </div>
-
-  </header>
-  <main>
-    <h2 class="text-warning text-bg-dark text-center p-3 fw-bold fs-1">- My Accounts -</h2>
-    
- 
-      <div class="encabezado">
-        <h1 class="d-flex justify-content-center align-items-center">Welcome <span class="ps-3 text-welcome">{{client.firstName}}!</span></h1>
       </div>
-      <template v-if="accounts.length < 3">
-        <button @click="createAccount" type="submit" class=" shadow__btn d-flex m-auto mt-3 btn-account">ADD ACCOUNTS</button>
+
+    </header>
+    <main>
+      <h2 class="text-warning text-bg-dark text-center p-3 fw-bold fs-1">- My Accounts -</h2>
+
+
+      <div class="encabezado">
+        <h1 class="d-flex justify-content-center align-items-center ">Welcome <span
+            class="ps-3 text-welcome">{{client.firstName}}</span><span
+            class="ps-3 text-welcome">{{client.lastName}}!</span></h1>
+      </div>
+      <template v-if="isActive.length < 3">
+        <button @click="createAccount" type="submit" class=" shadow__btn d-flex m-auto mt-3 btn-account">ADD
+          ACCOUNTS</button>
       </template>
-      <div class="pt-5 d-flex justify-content-around flex-wrap div-account ">
-        <div class="div-main d-flex flex-column justify-content-evenly text-center" v-for="account of accounts">
+      <div class="pt-3 d-flex justify-content-around flex-wrap div-account ">
+        <div class="div-main d-flex flex-column justify-content-evenly text-center" v-for="account of isActive">
           <h3 class="h3-account text-center">{{account.number}}</h3>
           <div>
             <h5 class="h5-account text-start">
               <span class="pe-2">Creation Day</span>
             </h5>
-            <span class="span-vue">{{account.creationDate.slice(0,10)}} at {{account.creationDate.slice(11,16)}}</span>
+            <span class="span-vue">{{account.creationDate.slice(0,10)}}</span>
             <h5 class="h5-account text-start"><span class="pe-2">Balance</span></h5>
-            <span class="span-vue">U$ {{account.balance}} </span>
+            <span class="span-vue">U$D {{account.balance}} </span>
             <h5 class="h5-account text-start"><span class="pe-2">Type Account</span></h5>
             <span class="span-vue">{{account.type}}</span>
           </div>
-           <div>
+          <div>
             <h4 class="h4"><span class="span">-</span>TRANSACTIONS<span class="span">-</span></h4>
-            <a :href="`./account.html?id=${account.id}`" ><img class="icon-debit" src="../asset/1041872.png" alt="" /></a>
+            <a :href="`./account.html?id=${account.id}`"><img class="icondebit" src="../asset/1041872.png"></a>
           </div>
           <div>
             <h4 class="h4"><span class="span">-</span>DELETE ACCOUNT<span class="span">-</span></h4>
-            <a @click="deleteAccount(account.number)" class="a-trans"><ion-icon class="icon-delete" name="trash-outline"></ion-icon></a>
+            <ion-button >
+              <ion-icon  @click="deleteAccount(account.id)" slot="trash" name="trash" size="large" aria-label="Favorite"></ion-icon>
+            </ion-button>
           </div>
         </div>
       </div>
 
       <h2 class="text-main p-3 text-bg-dark text-warning text-center">- LOANS -</h2>
-				<a href="./loan-application.html" class="d-flex m-auto mt-4 btn-loan justify-content-center">Request loan</a>
-				<div class="pt-5 pb-5 d-flex justify-content-center align-items-center contenedor" v-if="loans.length != 0"  v-for="loan of loans">
-					<table class="table container">
-						<thead class="table-warning">
-							<tr>
-								<td  class="text-bg-dark text-center">Name</td>
-								<td  class="text-bg-dark text-center">Amount</td>
-								<td  class="text-bg-dark text-center">Amount Pay</td>
-								<td  class="text-bg-dark text-center">Payments</td>
-								<td  class="text-bg-dark text-center">Pay loan</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td  class="text-dark text-center">{{loan.name.toUpperCase()}}</td>
-								<td  class="text-dark text-center">U{{loan.amount.toLocaleString()}}</td>
-								<td  class="text-dark text-center">U${{loan.totalAmount.toLocaleString()}}</td>
-								<td  class="text-dark text-center">{{loan.payments}}</td>
-								 <td  class="text-danger text-center">
-									<ion-icon @click="loanFilter(loan.id)" class="icon-pay"	name="cash-outline"></ion-icon>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="pt-5 pb-5" v-else>
-					<p class="mb-0 text-light fs-3 text-center">THIS CLIENT DOES NOT HAVE LOANS.</p>
-					<p class="text-p fs-3 text-center">DO YOU WANT TO ORDER ONE?</p>
-				</div>
-    
-    
-    
-  </main>
-  <footer class="d-flex justify-content-around flex-wrap ">
-    <div class="m-1 text-center ">
-      <h3 class="fw-bold">Location</h3>
-      <p class="fw-bold">Carson, California 90810·EE. UU.</p>
-    </div>
-    <div class="text-center m-1">
-      <h3 class="text-center fw-bold ">Elfer Bank</h3>
-      <a href="#"><img class="logito" src="../asset/favicon.png" alt=""></a>
-    </div>
-    <div class=" m-3">
-      <h4 class=" fw-bold">©DevPriscilaOcola</h4>
-    </div>
-  </footer>
-</div>
+      <a href="./loan-application.html" class="d-flex m-auto mt-4 btn-loan justify-content-center">Request loan</a>
+      <div class="pt-3 pb-2 d-flex justify-content-center align-items-center contenedor" v-if="loans.length != 0"
+        v-for="loan of loans">
+        <table class="table container">
+          <thead class="table-warning">
+            <tr>
+              <td class="text-bg-warning text-center fw-bold">Name</td>
+              <td class="text-bg-warning text-center fw-bold">Amount</td>
+              <td class="text-bg-warning text-center fw-bold">Payments</td>
+              <td class="text-bg-warning text-center fw-bold">Monthly Payment</td>
+              <td class="text-bg-warning text-center fw-bold">Pay loan</td>
+              <td class="text-bg-warning text-center fw-bold">Remains Payments</td>
+              <td class="text-bg-warning text-center fw-bold">Amount Pay</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-dark text-center fw-semibold">{{loan.name.toUpperCase()}}</td>
+              <td class="text-dark text-center fw-semibold">U$D ${{loan.amount}}</td>
+              <td class="text-dark text-center fw-semibold">{{loan.payments}} </td>
+              <td class="text-dark text-center fw-semibold"> U$D ${{paymentsCalcu(loan.amount, loan.payments) }}</td>
+              <td class="text-danger text-center fw-semibold">
+                <a :href="`./loanPayments.html?id=${loan.id}`" class="a-trans"><ion-icon name="cash" size="large"></ion-icon></a>
+              </td>
+              <td class="text-dark text-center fw-semibold">{{loan.remainPayments }}</td>
+              <td class="text-dark text-center fw-semibold">U$D ${{loan.remainAmount.toLocaleString()}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pt-5 pb-5" v-else>
+        <p class="mb-0 text-light fs-3 text-center">THIS CLIENT DOES NOT HAVE LOANS.</p>
+        <p class="text-p fs-3 text-center">DO YOU WANT TO ORDER ONE?</p>
+      </div>
+
+
+
+    </main>
+    <footer class="d-flex justify-content-around flex-wrap ">
+      <div class="m-1 text-center ">
+        <h3 class="fw-bold">Location</h3>
+        <p class="fw-bold">Carson, California 90810·EE. UU.</p>
+      </div>
+      <div class="text-center m-1">
+        <h3 class="text-center fw-bold ">Elfer Bank</h3>
+        <a href="#"><img class="logito" src="../asset/favicon.png" alt=""></a>
+      </div>
+      <div class=" m-3">
+        <h4 class=" fw-bold">©DevPriscilaOcola</h4>
+      </div>
+    </footer>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
@@ -117,7 +129,7 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="../js/accounts.js"></script>
 </body>
 

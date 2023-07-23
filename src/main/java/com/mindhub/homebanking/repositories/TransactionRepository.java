@@ -10,6 +10,6 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
-    List<Transaction> findByAccountId(long id);
+    List<Transaction> findByAccountId(Long id);
     List<Transaction> findByAccountAndDateBetween(Account account, LocalDateTime startDate, LocalDateTime endDate);
 }

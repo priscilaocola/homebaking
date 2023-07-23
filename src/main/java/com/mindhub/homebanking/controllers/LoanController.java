@@ -77,8 +77,6 @@ public class LoanController {
         ClientLoan requestedLoan = new ClientLoan(plusPercentage, loanApplicationDTO.getPayments(), loanApplicationDTO.getPayments(),plusPercentage);
       clientLoanService.saveClientLoan(requestedLoan);
 
-        account.setBalance(account.getBalance() + loanApplicationDTO.getAmount());
-
         Transaction newTransaction = new Transaction(loanApplicationDTO.getAmount(),loanType.getName() + " loan approved",  LocalDateTime.now(),TransactionType.CREDIT,true,account.getBalance());
         transactionService.saveTransaction(newTransaction);
         account.setBalance( account.getBalance() + loanApplicationDTO.getAmount());
@@ -111,50 +109,7 @@ public class LoanController {
         Client client = clientService.findByEmail(authentication.getName());
         return client.getClientLoans().stream().map(loan -> new ClientLoanDTO(loan)).collect(Collectors.toList());
     }
-//    @Transactional
-//    @PostMapping("/loans/pay")
-//    public ResponseEntity<Object> payLoan(Authentication authentication, @RequestParam Long id,@RequestParam String account, @RequestParam Double amount){
-//
-//        Client client = clientService.findByEmail(authentication.getName());
-//        ClientLoan clientLoan = clientLoanService.getClientLoan(id);
-//        Account authenticatedAccount = accountService.findByNumber(account);
-//        String description = "Pay " + clientLoan.getLoan().getName() + " Loan";
-//
-//        if(clientLoan == null){
-//            return new ResponseEntity<>("This loan does not exist", HttpStatus.FORBIDDEN);
-//        }else if(client == null){
-//            return new ResponseEntity<>("This client does not exist", HttpStatus.FORBIDDEN);
-//        }
-//        if ( account.isBlank() ){
-//            return new ResponseEntity<>("PLease enter an account", HttpStatus.FORBIDDEN);
-//        } else if ( client.getAccounts().stream().filter(accounts -> accounts.getNumber().equalsIgnoreCase(account)).collect(toList()).size() == 0 ){
-//            return new ResponseEntity<>("This account is not yours.", HttpStatus.FORBIDDEN);}
-////      amount parameter
-//        if (clientLoan.getTotalAmount() <= 0) {
-//            return new ResponseEntity<>("This loan has already been fully paid", HttpStatus.FORBIDDEN);
-//        }
-//        if ( amount < 1 ){
-//            return new ResponseEntity<>("PLease enter an amount bigger than 0", HttpStatus.FORBIDDEN);
-//        }  else if ( authenticatedAccount.getBalance() < amount ){
-//            return new ResponseEntity<>("Insufficient balance in your account " + authenticatedAccount.getNumber(), HttpStatus.FORBIDDEN);
-//        }
-//
-//        authenticatedAccount.setBalance(authenticatedAccount.getBalance() - amount);
-//
-//        Transaction newTransaction = new Transaction( amount, description , LocalDateTime.now(),TransactionType.DEBIT,true, authenticatedAccount.getBalance());
-//        authenticatedAccount.addTransactions(newTransaction);
-//        transactionService.saveTransaction(newTransaction);
-//
-//        clientLoan.setPayments(clientLoan.getPayments()-1);
-//
-//        if (clientLoan.getPayments() == 0) {
-//            clientLoan.setTotalAmount(0.0);
-//        } else {
-//            clientLoan.setTotalAmount(clientLoan.getTotalAmount() - amount);
-//        }
-//        return new ResponseEntity<>(HttpStatus.CREATED);
-//
-//    }
+
     }
 
 

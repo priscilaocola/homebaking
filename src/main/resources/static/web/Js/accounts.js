@@ -1,4 +1,5 @@
-let { createApp } = Vue;
+
+const { createApp } = Vue;
 
 createApp({
     data() {
@@ -7,8 +8,8 @@ createApp({
             client: [],
             loans: [],
 			account: '',
-			accountActive: [],
-			accountToDelete: '',
+			isActive:[],
+			accountDelete:0,
 			type: '',
 			payTotal:0,
 			loanID: [],
@@ -18,23 +19,41 @@ createApp({
         }
     },
     created() {
-        this.loadData()
+        this.loadData();
+		this.accountsActive()
+		this.myLoans()
     },
     methods: {
         loadData() {
             axios.get("/api/clients/current")
                 .then(res => {
                     this.client = res.data;
-                    this.accounts = this.client.accounts
-                    this.accounts = this.client.accounts.sort((a, b) => a.id - b.id)
-                    this.loans = this.client.loans.sort((a, b) => a.id - b.id)
-					this.accountActive = this.accounts.filter(account => account.activeAccount);
-                    this.format = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', });
-                    this.accounts.forEach(e => { e.balance = this.format.format(e.balance) });
-                    this.loans.forEach(e => { e.amount = this.format.format(e.amount) });
-                }).catch(err => console.log(err))
+                   }).catch(err => console.log(err))
 
         },
+		myLoans() {
+			axios.get(`/api/clients/current/loans`)
+				.then(res => {
+					this.loans = res.data.sort((a, b) => a.id - b.id)
+				}).catch(err => console.log(err))
+		},
+		paymentsCalcu(amount, payments) {
+			let division = amount / payments
+			let formatDivision = parseFloat(division.toFixed(3))
+			return formatDivision.toLocaleString()
+		},
+		accountsActive(){
+            axios.get('/api/clients/current/accounts')
+            .then(response => {
+                this.isActive = response.data;
+                this.isActive.sort((a,b)=> a.id - b.id)
+                console.log(this.isActive)
+            })
+            .catch(error => console.log(error));
+
+        },
+	
+
         logout() {
             Swal.fire({
 				title: 'Bye see you soon',
@@ -83,19 +102,17 @@ createApp({
 				
 			});
 		},
-		deleteAccount(accountNumber) {
+		deleteAccount(id) {
 			Swal.fire({
 				title: 'Do you want to delete the Account?',
-				showDenyButton: true,
 				showCancelButton: true,
 				confirmButtonText: 'Delete Account',
 				denyButtonText: `Go back`,
-			}).then((res) => {
-				if (res.value) {
-					this.accountToDelete = accountNumber
-					axios.patch(`/api/clients/current/accounts?number=${this.accountToDelete}`)
+			}).then((result) => {
+				if (result.value) {
+					this.accountDelete = id 
+					axios.patch(`/api/clients/current/accounts?id=${this.accountDelete}`)
 						.then(res => {
-							this.accounts = this.accounts.filter(account => account.number !== this.accountToDelete);
 							Swal.fire({
 								position: 'center',
 								icon: 'success',
@@ -119,42 +136,7 @@ createApp({
 			})
 		
 		},
-		loanFilter(id) {
-			this.loanID = this.loans.filter(loan => loan.id == id)[0];
-			console.log(this.loanID);
-			this.quotas = this.loanID.totalAmount / this.loanID.payments;
-			console.log(this.quotas);
-			this.payTotal = this.loanID.totalAmount;
-			console.log(this.payTotal);
-		},
-		loanPay() {
-			Swal.fire({
-				title: 'Are you sure you want to repay this loan?',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				confirmButtonText: 'SURE',
-			}).then(result => {
-				if (result.value) {
-					axios
-						.post( `/api/loans/pay?id=${this.loanID.id}&account=${this.account}&amount=${this.amount}`)
-						.then(response => {
-							Swal.fire({
-								icon: 'success',
-								text: 'It was paid correctly',
-								showConfirmButton: false,
-								timer: 2000,
-							}).then(() => (window.location.href = '/web/page/accounts.html'));
-						})
-						.catch(error => {
-							Swal.fire({
-								icon: 'error',
-								text: error.response.data,
-								confirmButtonColor: '#7c601893',
-							});
-						});
-				}
-			});
-		}
+	
 		
 	},
 }).mount("#app");

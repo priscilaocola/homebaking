@@ -36,7 +36,7 @@ public class Transaction {
 
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
     public double getAmount() {

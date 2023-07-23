@@ -49,7 +49,7 @@ height: 2em;
   font-weight: bolder;
 }
 
-.icon-debit {
+.icondebit {
 	width: 4em;
 	height: 3em;
 	object-fit: contain;
@@ -120,13 +120,7 @@ background: linear-gradient(90deg, rgba(244,110,87,1) 9%, rgba(247,7,7,1) 27%, r
 .btn-loan:hover {
 	transform: translateY(-3%);
 }
-.icon-delete {
-	font-size: 2em;
-	cursor: pointer;
-}
-.icon-pay {
-	font-size: 1.5em;
-}
+
 footer {
   min-height: 12vh;
   background: linear-gradient(0deg,  rgb(245, 194, 8) 100%, rgb(185, 109, 3) 0%);
@@ -151,6 +145,9 @@ footer {
 
 #mainTitle {
   text-shadow: black 1px 3px;
+}
+ion-icon {
+  color: rgb(198, 6, 6);
 }
 
 #titleContainer {
